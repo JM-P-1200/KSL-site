@@ -1,34 +1,54 @@
+<!-- data/projects.json -->
 {
   "projects": [
     {
       "id": 1,
-      "title": "Offline Farm Inventory (Template)",
-      "description": "An offline-first inventory template using localStorage and optional sync. Lightweight, simple forms, ideal for low-storage devices.",
-      "link": "projects/offline-inventory/index.html"
+      "title": "KSL Mesh Gateway",
+      "description": "A fault‑tolerant mesh networking gateway built for sitios with weak connectivity. Uses watchdog scripts, automatic failover, and a rolling log archive.",
+      "tech": ["Node.js", "Lightweight MQTT", "Mesh Networking", "Shell Scripts"],
+      "status": "Live",
+      "details": "Routes telemetry packets from sensors across a barangay cluster with auto‑repair routines and energy‑aware scheduling."
     },
     {
       "id": 2,
-      "title": "Mesh WiFi Config Snippets",
-      "description": "Collection of tested mesh and gateway configs for low-power rural deployments. Includes comments and safety notes.",
-      "link": "projects/mesh-configs/README.md"
+      "title": "Farm Inventory Dashboard (Offline‑First)",
+      "description": "A locally‑stored, sync‑on‑demand dashboard for small farms with QR tagging for produce and worker logs.",
+      "tech": ["Vanilla JS", "localStorage", "QR API", "Background Sync"],
+      "status": "On‑Field Deployment",
+      "details": "Designed for intermittent electricity with graceful‑degrade UI and farm‑friendly workflows tested with real users."
     },
     {
       "id": 3,
-      "title": "Solar Watchdog Scripts",
-      "description": "Small scripts to monitor battery levels, restart services, and notify via SMS/GSM dongles when thresholds are reached.",
-      "link": "projects/solar-watchdog/"
+      "title": "Solar Monitoring Tool",
+      "description": "A lightweight web tool that monitors solar charge levels, battery drift, and cloudy‑day patterns.",
+      "tech": ["JS", "Chart rendering", "Custom Telemetry Parser"],
+      "status": "Used Locally",
+      "details": "Built around actual daily off‑grid constraints: low‑power mode, compressed deltas, and energy‑aware UI behavior."
     },
     {
       "id": 4,
-      "title": "Tiny Weather Logger",
-      "description": "A minimal JS + CSV logger that stores readings locally and prepares compressed deltas for periodic syncs.",
-      "link": "projects/weather-logger/"
+      "title": "Device Repair Logbook",
+      "description": "A documentation tool for tracking repairs, scavenged parts, and device histories in remote communities.",
+      "tech": ["HTML/CSS", "IndexedDB", "Minimal UI"],
+      "status": "Internal",
+      "details": "Used to maintain long‑term repair notes for routers, laptops, and repurposed devices—supports offline usage and export."
     },
     {
       "id": 5,
-      "title": "Repair Notes Template",
-      "description": "Reusable markdown template for documenting repairs: parts, steps, tests, and future notes—keeps devices alive longer.",
-      "link": "projects/repair-notes/"
+      "title": "Seven Scripts Automation Suite",
+      "description": "A set of tiny scripts automating log cleanup, backup routines, battery alerts, and mesh node recoveries.",
+      "tech": ["Bash", "Python", "Cron"],
+      "status": "Integrated",
+      "details": "Each script solves a fragile pain‑point in off‑grid life: watchdog restart, SD cleanup, CSV→JSON normalization, and more."
     }
   ]
 }
+
+
+<!-- blog.html -->
+
+<!-- blog-renderer.js -->
+
+<!-- style.css (improved responsiveness + glass look) -->
+
+<!-- script.js -->

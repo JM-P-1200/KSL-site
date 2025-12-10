@@ -1,4 +1,3 @@
-
 // dynamic loader for projects
 (function(){
   var container = document.getElementById('project-list');
