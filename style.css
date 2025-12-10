@@ -26,3 +26,10 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,ui-sans-se
   .page-section{padding:16px;margin:16px}
   .hero{height:auto;padding:40px 10px}
 }
+
+
+body{font-family:sans-serif;margin:0;padding:0;background:#fafafa}
+nav{display:flex;gap:20px;padding:20px;background:#111}
+nav a{color:#fff;text-decoration:none}
+#hero{padding:80px 20px;text-align:center;background:#eee}
+article{background:#fff;padding:20px;margin:20px;border-radius:8px;box-shadow:0 0 4px #ccc}
