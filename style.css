@@ -32,3 +32,27 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,ui-sans-se
   .page-section{padding:16px;margin:16px}
   .hero{height:auto;padding:40px 10px}
 }
+
+/* Contact Page Scoped Styles */
+.contact-wrapper {
+    background: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.contact-card {
+    background: #ffffff;
+}
+
+.contact-card .form-control {
+    border-radius: 12px;
+}
+
+.contact-card button {
+    border-radius: 12px;
+}
+
+.contact-subtext {
+    font-size: 0.9rem;
+}

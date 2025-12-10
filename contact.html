@@ -1,42 +1,60 @@
-<main class="page-section">
-  <div class="container d-flex justify-content-center">
-    <div class="glass p-4 p-md-5 rounded-4 shadow-sm" style="max-width: 650px; width: 100%;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
 
-      <h1 class="text-center mb-3">Get In Touch</h1>
-      <p class="text-center text-muted mb-4">
-        Whether you’re sending bug logs, collab proposals, or you just want to say hi —
-        this is the safest route to my off-grid workstation.
-      </p>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        
-        <!-- Netlify hidden fields -->
-        <input type="hidden" name="form-name" value="contact">
-        <div style="display:none;">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
+    <!-- Contact Page Only CSS -->
+    <link rel="stylesheet" href="./assets/css/contact.css">
+</head>
+<body>
+
+    <section class="contact-wrapper py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                
+                <div class="col-md-8 col-lg-6">
+                    <div class="contact-card p-4 shadow rounded-4">
+
+                        <h2 class="mb-3 fw-bold text-center">Let's Talk</h2>
+                        <p class="text-center text-muted mb-4 contact-subtext">
+                            Whether it's a project, an idea, or just a quick question—send it over.
+                        </p>
+
+                        <form id="contactForm">
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Full Name</label>
+                                <input type="text" class="form-control" placeholder="Juan Dela Cruz">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Email</label>
+                                <input type="email" class="form-control" placeholder="email@example.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Message</label>
+                                <textarea class="form-control" rows="5" placeholder="Tell me something..."></textarea>
+                            </div>
+
+                            <button class="btn btn-dark w-100 py-2 rounded-3">
+                                Send Message
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="mb-3">
-          <label class="form-label">Your Name</label>
-          <input type="text" name="name" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Email Address</label>
-          <input type="email" name="email" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Message</label>
-          <textarea name="message" class="form-control" rows="5" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
-          Send Message
-        </button>
-
-      </form>
-
-    </div>
-  </div>
-</main>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
