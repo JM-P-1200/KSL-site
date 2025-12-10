@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Offline Farm Inventory (Template)",
+      "description": "An offline-first inventory template using localStorage and optional sync. Lightweight, simple forms, ideal for low-storage devices.",
+      "link": "projects/offline-inventory/index.html"
+    },
+    {
+      "id": 2,
+      "title": "Mesh WiFi Config Snippets",
+      "description": "Collection of tested mesh and gateway configs for low-power rural deployments. Includes comments and safety notes.",
+      "link": "projects/mesh-configs/README.md"
+    },
+    {
+      "id": 3,
+      "title": "Solar Watchdog Scripts",
+      "description": "Small scripts to monitor battery levels, restart services, and notify via SMS/GSM dongles when thresholds are reached.",
+      "link": "projects/solar-watchdog/"
+    },
+    {
+      "id": 4,
+      "title": "Tiny Weather Logger",
+      "description": "A minimal JS + CSV logger that stores readings locally and prepares compressed deltas for periodic syncs.",
+      "link": "projects/weather-logger/"
+    },
+    {
+      "id": 5,
+      "title": "Repair Notes Template",
+      "description": "Reusable markdown template for documenting repairs: parts, steps, tests, and future notes—keeps devices alive longer.",
+      "link": "projects/repair-notes/"
+    }
+  ]
+}
