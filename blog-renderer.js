@@ -7,7 +7,8 @@
   }
 
   function renderParagraphs(text){
-    return text.split(/\\n\\n+/).map(function(par){
+    return text.split(/
+    +/).map(function(par){
       return '<p>'+escapeHtml(par)+'</p>';
     }).join('');
   }
@@ -19,7 +20,7 @@
       if(!container) return;
 
       container.innerHTML = json.blogs.map(function(post){
-        return '\n<article class=\"blog-post glass-min\">\n  <h2>'+escapeHtml(post.title)+'</h2>\\n  <small class=\"muted\">'+escapeHtml(post.date)+'</small>\\n  <div class=\"post-body\">'+renderParagraphs(post.content)+'</div>\\n</article>\\n';
+        return '\\n<article class=\"blog-post glass-min\">\\n  <h2>'+escapeHtml(post.title)+'</h2>\\n  <small class=\"muted\">'+escapeHtml(post.date)+'</small>\\n  <div class=\"post-body\">'+renderParagraphs(post.content)+'</div>\\n</article>\\n';
       }).join('\\n');
 
       // basic responsiveness tweak: collapse long posts with read-more
