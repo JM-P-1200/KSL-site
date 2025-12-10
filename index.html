@@ -1,21 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Miguiel Encinares</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kawayanan Systems Lab</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background:#f2f2f2; }
+    header { background: #222; color: #fff; padding: 2rem; text-align: center; }
+    section { padding: 2rem; max-width: 900px; margin: auto; background:#fff; margin-top:1.5rem; border-radius:8px; }
+    h1, h2, h3 { margin-top: 0; }
+    footer { text-align:center; padding:2rem; font-size:0.9rem; color:#444; }
+    .code-sample { background:#eee; padding:1rem; border-radius:6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="blog.html">Blog</a>
-</nav>
-<section id="hero">
-  <h1>Miguiel Encinares</h1>
-  <p>Off-grid dev building things quietly.</p>
-</section>
-<section id="updates"></section>
-<script src="script.js"></script>
+  <section id="hero" class="hero-section">
+    <h1>Building quietly in the hills</h1>
+    <p>Stories, projects, and off‑grid experiments by Miguiel Encinares.</p>
+  </section>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <header>
+    <h1>Kawayanan Systems Lab (KSL)</h1>
+    <p>Technology Built Where Signals Fade</p>
+  </header>
+
+  <nav style="background:#333; padding:1rem; text-align:center;">
+    <a href="#about" style="color:#fff; margin:0 1rem; text-decoration:none;">About</a>
+    <a href="#services" style="color:#fff; margin:0 1rem; text-decoration:none;">Services</a>
+    <a href="#proof" style="color:#fff; margin:0 1rem; text-decoration:none;">Proof of Work</a>
+    <a href="#backstory" style="color:#fff; margin:0 1rem; text-decoration:none;">Backstory</a>
+    <a href="#contact" style="color:#fff; margin:0 1rem; text-decoration:none;">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About the Builder</h2>
+    <p>Miguiel Encinares, born December 8, 1998, quietly builds his work from Purok 4, Sitio Kawayanan, Brgy. Malico, Umingan Range, Nueva Ecija. A tech tinkerer who grew up loving anything that blinks, beeps, or breaks. He’s the type to debug code while the generator hums outside and the mountains fog up at dawn. </p>
+    <p>He’s got this strange hobyy of exhausting himself on purpose—coding sprints, night-long repair sessions, or taking on too many tasks—just to numb the noise of life. Instead of slowing down, he works faster. Instead of resting, he builds. It’s survival through productivity, and oddly, it works for him.</p>
+  </section>
+
+  <section id="services">
+    <h2>What KSL Is</h2>
+    <p>A private off-grid workshop hidden in Umingan Range. No storefront. No logo outside. Just a small workspace powered by solar panels and stubbornness. Built for solving rural problems with practical tech.</p>
+  </section>
+
+  <section id="proof">
+    <h2>Core Services</h2>
+    <h3>1. Rural Automation Tools</h3>
+    <ul>
+      <li>Rainfall monitoring scripts</li>
+      <li>Low-cost farm sensor dashboards</li>
+      <li>Offline-first mini apps</li>
+      <li>Mesh WiFi configs for sitios</li>
+    </ul>
+
+    <h3>2. Quiet Software Work-for-Hire</h3>
+    <ul>
+      <li>Simple CRM apps</li>
+      <li>Solar battery logging tools</li>
+      <li>Farm inventory micro-systems</li>
+      <li>Local repairs & tech troubleshooting</li>
+    </ul>
+
+    <h3>3. Salvage & Repurpose Works</h3>
+    <p>Old laptops, routers, busted boards—if it can be revived, he revives it. If not, he’ll tear it down for spare parts.</p>
+  </section>
+
+  <section id="backstory">
+    <h2>Template-Based Proof of Work</h2>
+    <p>Below are simple templates demonstrating the type of systems Miguiel builds. All text-only, no images.</p>
+
+    <h3>Sample: Offline-First Farm Inventory (HTML Template)</h3>
+    <div class="code-sample">
+&lt;div class="inventory-item"> 
+  &lt;h4>Item: Corn Feed&lt;/h4> 
+  &lt;p>Quantity: 45 sacks&lt;/p> 
+  &lt;p>Last Updated: 2025-01-03&lt;/p> 
+&lt;/div>
+    </div>
+
+    <h3>Sample: Weather Log Script (Pseudo-JS)</h3>
+    <div class="code-sample">
+function logWeather(rainMM, tempC) {
+  const entry = `Rain: ${rainMM}mm | Temp: ${tempC}C | Time: ${new Date()}`;
+  localStorage.setItem('weather-log', entry);
+  return entry;
+}
+    </div>
+
+    <h3>Sample: Mesh WiFi Config Snippet</h3>
+    <div class="code-sample">
+set ssid "KawayananMesh";
+set channel 11;
+set txpower 18;
+set mode ap;
+commit;
+    </div>
+  </section>
+
+  <section>
+    <h2>Backstory</h2>
+    <p>Miguiel didn’t plan to start a business. It just happened. Neighbors kept bringing broken phones. Then old routers. Then someone from the next barangay asked if he could build a rainfall logger. Eventually some local group asked if he could create a small CRM for tracking farm supply outputs. One project led to ten.</p>
+    <p>He built KSL unintentionally—like fixing one leak at a time until he accidentally renovated the whole house. Today, he keeps things low-key, building quietly for people who need someone who understands both tech and the realities of rural life.</p>
+  </section>
+
+  <footer>
+    Kawayanan Systems Lab © 2025 — Built in the mountains of Nueva Ecija
+    <section id="contact">
+    <h2>Contact</h2>
+    <p>For project requests, repairs, or quiet commissions, Miguiel can be reached through:</p>
+    <ul>
+      <li>Email: kawayanan.systems.lab@protonmail.com</li>
+      <li>Location: Purok 4, Sitio Kawayanan, Brgy. Malico, Umingan Range, Nueva Ecija</li>
+    </ul>
+    <p>No walk-ins. No guarantees on signal. But he usually replies once the solar batteries recharge.</p>
+  </section>
+
+  </footer>
+  
 </body>
 </html>
