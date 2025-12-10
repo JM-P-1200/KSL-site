@@ -1,38 +1,42 @@
 <main class="page-section">
-  <div class="contact-wrapper">
-    <div class="contact-card glass">
-      <h1>Get In Touch</h1>
-      <p>Got a question, a collab idea, or a strange bug log? This is the safest way to reach my off-grid workstation.</p>
+  <div class="container d-flex justify-content-center">
+    <div class="glass p-4 p-md-5 rounded-4 shadow-sm" style="max-width: 650px; width: 100%;">
 
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <h1 class="text-center mb-3">Get In Touch</h1>
+      <p class="text-center text-muted mb-4">
+        Whether you’re sending bug logs, collab proposals, or you just want to say hi —
+        this is the safest route to my off-grid workstation.
+      </p>
+
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         
-        <!-- Hidden honeypot -->
+        <!-- Netlify hidden fields -->
         <input type="hidden" name="form-name" value="contact">
-        <p class="hidden-field">
+        <div style="display:none;">
           <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
-
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" name="name" required>
         </div>
 
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" required>
+        <div class="mb-3">
+          <label class="form-label">Your Name</label>
+          <input type="text" name="name" class="form-control" required>
         </div>
 
-        <div class="form-group">
-          <label>Message</label>
-          <textarea name="message" required></textarea>
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn-primary">Send Message</button>
+        <div class="mb-3">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-control" rows="5" required></textarea>
+        </div>
 
-        <div class="form-success">Your message has been sent!</div>
-        <div class="form-error">Something went wrong. Please try again.</div>
+        <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+          Send Message
+        </button>
 
       </form>
+
     </div>
   </div>
 </main>
