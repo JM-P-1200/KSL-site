@@ -1,28 +1,3 @@
-<script>
-function loadSection(id, url){
- fetch(url).then(r=>r.text()).then(html=>{
-   document.getElementById(id).innerHTML = html;
- });
-}
-</script>
-
-const projectList = document.getElementById("project-list");
-
-fetch("data/projects.json")
-  .then(res => res.json())
-  .then(data => {
-    projectList.innerHTML = data.projects
-      .map(
-        p => `
-        <div class="card glass-min">
-          <h3>${p.title}</h3>
-          <p>${p.description}</p>
-          <a href="${p.link}" target="_blank">View Code →</a>
-        </div>
-      `
-      )
-      .join("");
-  });
 
 // dynamic loader for projects
 (function(){
@@ -37,6 +12,3 @@ fetch("data/projects.json")
     })
     .catch(function(err){ container.innerHTML = '<p class="error">Unable to load projects: '+err.message+'</p>'});
 })();
-
-
-</html>
