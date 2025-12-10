@@ -16,18 +16,20 @@
   <section class="page-section">
     <h1>Contact</h1>
     <p>If you're trying to reach Miguiel, expect delays. Off-grid life means messages get answered when the sun is bright, the WiFi behaves, and the laptop battery decides not to be dramatic.</p>
-    <form name="Contact" method="POST" netlify>
-      <label>Name</label>
-      <input type="text" />
-      <label>Email</label>
-      <input type="email" />
-      <label>Message</label>
-      <textarea></textarea>
-      
-      <input type="hidden" name="form-name" value="contact">
-      
-      <button type="submit">Send</button>
-    </form>
+    <form name="contact" method="POST" data-netlify="true">
+  <h2>Send a Message</h2>
+
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <textarea name="message" placeholder="Your message..." required></textarea>
+
+  <!-- Important! Required hidden field -->
+  <input type="hidden" name="form-name" value="contact">
+
+  <button type="submit">Send</button>
+</form>
+
   </section>
 </body>
 
