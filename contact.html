@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact - Miguiel Encinares</title>
+  <title>Contact – Miguiel Encinares</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <nav class="main-nav">
     <a href="index.html">Home</a>
@@ -16,47 +17,65 @@
   </nav>
 
   <main class="page-section">
-    <h1 class="section-title">Contact</h1>
-    <div class="glass">
-      <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact" />
-        <p style="display:none;"><input name="bot-field" /></p>
+    <h1 class="section-title">Get In Touch</h1>
+    <p class="section-desc">
+      Whether you want to collaborate, send bug logs, or just say hi — here’s the safest way to reach my off-grid workstation.
+    </p>
 
-        <label>Name</label>
-        <input type="text" name="name" required />
+    <div class="glass contact-card">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="trap" id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
 
-        <label>Email</label>
-        <input type="email" name="email" required />
+        <p class="hidden">
+          <label>Don’t fill this out: <input name="trap" /></label>
+        </p>
 
-        <label>Message</label>
-        <textarea name="message" rows="6" required></textarea>
+        <label class="input-label">Your Name</label>
+        <input type="text" name="name" class="input-field" required>
 
-        <button type="submit">Send Message</button>
+        <label class="input-label">Email Address</label>
+        <input type="email" name="email" class="input-field" required>
+
+        <label class="input-label">Message</label>
+        <textarea name="message" rows="5" class="input-field" required></textarea>
+
+        <button type="submit" class="btn-primary full-btn">Send Message</button>
+
+        <div id="formSuccess" class="form-success hidden">
+          Message sent! I'll get back to you after the solar panels recharge.
+        </div>
+
+        <div id="formError" class="form-error hidden">
+          Something went wrong. Try again when the signal stabilizes.
+        </div>
       </form>
-
-      <div id="formSuccess" class="form-alert success" style="display:none;">Message sent successfully!</div>
-      <div id="formError" class="form-alert error" style="display:none;">Something went wrong. Try again.</div>
     </div>
   </main>
 
   <script>
+    // Optional: animated success/error without leaving the page
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
-    const errorMsg = document.getElementById('formError');
+    const error = document.getElementById('formError');
 
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', (e) => {
+      // Prevent the default Netlify behavior for inline UX
       e.preventDefault();
+
       const data = new FormData(form);
 
-      fetch('/', { method: 'POST', body: data })
+      fetch("/", { method: "POST", body: data })
         .then(() => {
-          success.style.display = 'block';
+          success.classList.remove('hidden');
+          success.classList.add('pop-in');
           form.reset();
         })
         .catch(() => {
-          errorMsg.style.display = 'block';
+          error.classList.remove('hidden');
+          error.classList.add('pop-in');
         });
     });
   </script>
+
 </body>
 </html>
