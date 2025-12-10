@@ -1,12 +1,46 @@
-[
-  {
-    "title": "Off-grid Morning Routine",
-    "date": "2025-01-01",
-    "content": "Woke up to the sound of wind brushing through Kawayanan...Woke up to the sound of wind brushing through Kawayanan...Woke up to the sound of wind brushing through Kawayanan...Woke up to the sound of wind brushing through Kawayanan...Woke up to the sound of wind brushing through Kawayanan..."
-  },
-  {
-    "title": "Client Deadlines and Storms",
-    "date": "2025-01-03",
-    "content": "When the rain hits the roof this hard, the WiFi decides...When the rain hits the roof this hard, the WiFi decides...When the rain hits the roof this hard, the WiFi decides...When the rain hits the roof this hard, the WiFi decides...When the rain hits the roof this hard, the WiFi decides..."
-  }
-]
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Off-Grid Morning Thoughts",
+      "date": "2025-01-04",
+      "content": "Waking up in the hills feels different. The silence is loud in its own way, like the whole place is waiting for you to start moving. My mornings start with boiling water over a small portable burner, checking the battery level on the solar controller, then opening the laptop and hoping the WiFi gods are in a good mood today.\\n\\nThere’s something odd but grounding about coding while the sunrise hits the bamboo walls. Maybe it slows me down enough to actually think. Or maybe I'm just desperate for stability and this place gives me an excuse to pretend I have some. The kettle whistles, the rooster judges, and I pick a task. Small wins become currency here: a sensor that reports twice without hiccup, a scheduled sync that actually completes, a commit that doesn’t break the build.\\n\\nI keep a tiny notebook for ideas. Most of them are dumb, but some are useful. Today I sketched a lightweight sync strategy for farm inventory where local entries queue up and a roaming laptop acts as the courier. That’s the thing about off-grid work—you design for what’s actually possible, not for the cloud dream someone sold you in a webinar.\\n\\nBeing off-grid doesn’t feel like punishment. It’s a constraint that forces better design. You learn to ask, 'What will still work when the power blinks?' and then you build that. The code ends up smaller, the user flows tighter, and the tools—when they work—feel earned."
+    },
+    {
+      "id": 2,
+      "title": "Client Deadlines in the Rain",
+      "date": "2025-01-06",
+      "content": "Rainstorms hit harder in Sitio Kawayanan. When the roof starts rattling, I know the WiFi is preparing to abandon me. Deadlines don't care about the weather though. So I sit there, typing at full speed, trying to push commits before the signal collapses.\\n\\nStill, there's charm in fighting through it. Every finished project feels like a small victory against nature's mood swings. And honestly? I think these messy setups make the stories better. I once had to zip up and walk three kilometers to the barangay center with a USB stick because the upload stalled—felt like a pilgrim carrying sacred code. The client didn’t care about the pilgrimage; the client cared the feature shipped. And that’s all that ever mattered in the end."
+    },
+    {
+      "id": 3,
+      "title": "Repairing Old Tech, Rewriting Stories",
+      "date": "2025-10-05",
+      "content": "There’s a lot of romance thrown at new hardware—sleek logos, thin bezels, marketing that promises your life will reboot if you pay enough. But out here, the romance is spent on things that keep working long past their warranties: an old laptop with a sticky hinge, a router whose plastic is browned by too much sun, batteries that have memorized partial charges.\\n\\nRepairing old tech has taught me three valuable habits: patience, curiosity, and reuse. Patience because you have to disassemble slowly, label screws, and trust that something that seems irretrievable may only need a gentle nudge. Curiosity because components that look dead often just need the right signal. And reuse because parts are precious—capacitors, connectors, the kind of tiny things that cost more to ship than the device is worth."
+    },
+    {
+      "id": 4,
+      "title": "Solar Math: Budgeting Watts and Patience",
+      "date": "2025-11-03",
+      "content": "Solar panels here are less about clean energy brand photos and more about arithmetic and humility. You learn to budget in watt-hours like you're counting coins in a jar: every device draws, every charge costs, and everything adds up.\\n\\nThe first rule of off-grid power is to measure. Guessing is for poets. I installed a small telemetry device on the controller that logs daily production, cloud coverage, and battery drift. After a month of data, patterns emerged: cloudy afternoons, heavy consumption during editing sessions, and the odd night when the cooler chugs and kills the battery. With that data, I constructed a simple priority list—what runs when the battery is low, what stays offline, and what gets charged only at noon."
+    },
+    {
+      "id": 5,
+      "title": "Seven Small Scripts That Saved the Day",
+      "date": "2025-11-20",
+      "content": "I am a sucker for tiny automations—scripts that run quietly and do the boring job so I don't have to. Over the years, I’ve collected a handful that I call my 'seven small scripts.' They’re not glamorous, but each one saved time, prevented mistakes, or kept a system alive.\\n\\nScript one: a watchdog that restarts the mesh gateway if packet loss spikes. Script two: a rolling archive that compresses old logs each week to keep the SD card from filling. Script three: a sync reconciler that de-duplicates sensor events when connectivity returns. Script four: a small CLI tool that converts the bespoke CSV exports from our small farm inventory into a normalized JSON the dashboard can ingest."
+    },
+    {
+      "id": 6,
+      "title": "Seven Small Scripts That Saved the Day (Part 2)",
+      "date": "2025-11-21",
+      "content": "Continuing the notes on small scripts: script five sends battery alerts via a GSM dongle, script six runs nightly health checks and attempts automated repairs, script seven copies configs to attached USB sticks. These small pieces are the scaffolding for everything else."
+    },
+    {
+      "id": 7,
+      "title": "The Long Week of Building a Farm Dashboard",
+      "date": "2025-12-01",
+      "content": "Last week I spent five days on a single farm dashboard—and it felt like a small siege. The client needed something offline-first, lightweight, and forgiving. They wanted local entry for laborers, QR codes for sacks, and a weekly sync that a visiting coordinator could trigger with a tablet. It sounded simple until the realities of the field appeared: intermittent power, phones with tiny storage, and users who expected things to be predictable."
+    }
+  ]
+}

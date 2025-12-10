@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Contact - Miguiel Encinares</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - Miguiel Encinares</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav class="main-nav">
@@ -13,23 +14,49 @@
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <section class="page-section">
-    <h1>Contact</h1>
-    <p>If you're trying to reach Miguiel, expect delays. Off-grid life means messages get answered when the sun is bright, the WiFi behaves, and the laptop battery decides not to be dramatic.</p>
-    <form name="Contact" method="POST" data-netlify="true">
-  <h2>Send a Message</h2>
 
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
+  <main class="page-section">
+    <h1 class="section-title">Contact</h1>
+    <div class="glass">
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none;"><input name="bot-field" /></p>
 
-  <textarea name="message" placeholder="Your message..." required></textarea>
+        <label>Name</label>
+        <input type="text" name="name" required />
 
-  <!-- Important! Required hidden field -->
-  <input type="hidden" name="form-name" value="Contact">
+        <label>Email</label>
+        <input type="email" name="email" required />
 
-  <button type="submit">Send</button>
-</form>
+        <label>Message</label>
+        <textarea name="message" rows="6" required></textarea>
 
-  </section>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div id="formSuccess" class="form-alert success" style="display:none;">Message sent successfully!</div>
+      <div id="formError" class="form-alert error" style="display:none;">Something went wrong. Try again.</div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+
+      fetch('/', { method: 'POST', body: data })
+        .then(() => {
+          success.style.display = 'block';
+          form.reset();
+        })
+        .catch(() => {
+          errorMsg.style.display = 'block';
+        });
+    });
+  </script>
 </body>
-
+</html>
