@@ -1,26 +1,78 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Miguiel Encinares</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miguiel Encinares – Off-Grid Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
+
 <body>
-  <section id="hero" class="hero-section">
-    <h1>Building quietly in the hills</h1>
-    <p>Stories, projects, and off-grid experiments by Miguiel Encinares.</p>
+
+  <!-- HERO SECTION -->
+  <section class="hero glass">
+    <div class="hero-content">
+      <h1 class="hero-title">Living Off-Grid. Building On-Code.</h1>
+      <p class="hero-subtitle">
+        I build small tools, templates, and systems powered by clean code—
+        straight from the mountains of Malico.
+      </p>
+      <a href="projects.html" class="btn-primary">View My Work</a>
+    </div>
   </section>
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <section class="home-intro">
-    <h2>Welcome</h2>
-    <p>This is the working log and off-grid dev journal of Miguiel Encinares. Powered by coffee, half-broken solar panels, and stubborn hope.</p>
+
+  <!-- WHAT WE DO -->
+  <section class="section glass">
+    <h2 class="section-title">What I Do</h2>
+
+    <div class="grid-3">
+      <div class="card glass-min">
+        <h3>Custom Templates</h3>
+        <p>HTML, CSS, JS templates built from scratch. Clean, fast, and ready to deploy on any static host.</p>
+      </div>
+
+      <div class="card glass-min">
+        <h3>Client Work</h3>
+        <p>I help small businesses and off-grid entrepreneurs build simple digital systems that actually work.</p>
+      </div>
+
+      <div class="card glass-min">
+        <h3>Experimental Tools</h3>
+        <p>Little scripts and prototypes created while exploring code in the quiet hills of Umingan Range.</p>
+      </div>
+    </div>
   </section>
+
+  <!-- WHY I DO IT -->
+  <section class="section glass">
+    <h2 class="section-title">Why I Do It</h2>
+    <p class="section-desc">
+      Building things keeps me grounded. It helps me turn pain into productivity, 
+      solitude into clarity, and ideas into something useful.  
+      <br><br>
+      The world is loud—but code stays honest. Even when life isn’t.
+    </p>
+  </section>
+
+  <!-- PROJECT OVERVIEW -->
+  <section class="section glass">
+    <h2 class="section-title">Project Overview</h2>
+    <p class="section-desc">Here are some of the template-based projects I’ve built recently:</p>
+
+    <div id="project-list" class="project-grid">
+      <!-- script.js will inject dynamic content here -->
+    </div>
+
+    <a href="projects.html" class="btn-secondary">See All Projects</a>
+  </section>
+
+  <!-- CTA FOOTER -->
+  <section class="cta glass">
+    <h2>Want to collaborate?</h2>
+    <p>I’m off-grid, but never offline. Message me anytime.</p>
+    <a href="contact.html" class="btn-primary">Contact Me</a>
+  </section>
+
 </body>
 </html>
