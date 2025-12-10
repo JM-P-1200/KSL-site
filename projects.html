@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projects - Miguiel Encinares</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <section class="page-section">
+    <h1>Project Templates</h1>
+    <div class="project-card">
+      <h2>Basic Hero Template</h2>
+      <pre><code>&lt;section class="hero"&gt;
+  &lt;h1&gt;{{title}}&lt;/h1&gt;
+  &lt;p&gt;{{subtitle}}&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+    <div class="project-card">
+      <h2>Card Grid Template</h2>
+      <pre><code>&lt;div class="grid"&gt;
+  {{cards}}
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="project-card">
+      <h2>Reusable Fetch Renderer</h2>
+      <pre><code>function render(target, data) {
+  document.getElementById(target).innerHTML = data.map(item =&gt; `
+    &lt;article&gt;
+      &lt;h2&gt;${item.title}&lt;/h2&gt;
+      &lt;p&gt;${item.content}&lt;/p&gt;
+    &lt;/article&gt;
+  `).join('');
+}</code></pre>
+    </div>
+  </section>
+</body>
+</html>

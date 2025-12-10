@@ -1,9 +1,8 @@
-fetch('data/updates.json')
- .then(r=>r.json())
- .then(d=>{
-  document.getElementById('updates').innerHTML = d.map(u=>`
-   <article>
-    <h2>${u.title}</h2>
-    <p>${u.content}</p>
-   </article>`).join('');
+<script>
+function loadSection(id, url){
+ fetch(url).then(r=>r.text()).then(html=>{
+   document.getElementById(id).innerHTML = html;
  });
+}
+</script>
+</html>
