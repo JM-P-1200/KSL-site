@@ -58,32 +58,32 @@
 
                         <h2 class="mb-3 fw-bold text-center">Let's Talk</h2>
                         <p class="text-center text-muted mb-4 contact-subtext">
-                            Whether it's a project, an idea, or just a quick question—send it over.
+                            If you're trying to reach Miguiel, expect adelays. Off-grid life means messages get answered when the sun is bright, the Wifi behaves, and the laptop battery decides not to be dramatic
                         </p>
 
-                        <form id="contact" method="POST" netflify>
+                        <form id="contact" method="POST" data-netlify="true">
                           
-
+                          
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Full Name</label>
-                                <input type="text" class="form-control" placeholder="Juan Dela Cruz">
+                                <input type="text" name="name" class="form-control" placeholder="Juan Dela Cruz">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Email</label>
-                                <input type="email" class="form-control" placeholder="email@example.com">
+                                <input type="email" name="email" class="form-control" placeholder="email@example.com">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Message</label>
-                                <textarea class="form-control" rows="5" placeholder="Tell me something..."></textarea>
+                                <textarea name="Message" class="form-control" rows="5" placeholder="Tell me something..."></textarea>
                             </div>
 
-                            <button class="btn btn-dark w-100 py-2 rounded-3">
+                            <button type="submit" class="btn btn-dark w-100 py-2 rounded-3">
                                 Send Message
                             </button>
                             
-                            <input type="hidden" name="form-name" value="contact">
+                            <input type="hidden" name="form-name" value="Contact">
 
                             
                             <div id="formSuccess" class="form-alert success" style="display:none;">
