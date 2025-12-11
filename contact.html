@@ -61,7 +61,12 @@
                             Whether it's a project, an idea, or just a quick question—send it over.
                         </p>
 
-                        <form id="contactForm" netflify>
+                        <form id="contact" method="POST" netflify>
+                          
+                          <input type="hidden" name="form-name" value="contact">
+  <p class="hidden">
+    <input name="bot-field">
+  </p>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Full Name</label>
@@ -81,6 +86,14 @@
                             <button class="btn btn-dark w-100 py-2 rounded-3">
                                 Send Message
                             </button>
+                            
+                            <div id="formSuccess" class="form-alert success" style="display:none;">
+    Message sent! I’ll get back to you soon.
+  </div>
+
+  <div id="formError" class="form-alert error" style="display:none;">
+    Something went wrong — try again!
+  </div>
 
                         </form>
                     </div>
