@@ -1,44 +1,16 @@
 {
-  "projects": [
-    {
-      "id": 1,
-      "title": "KSL Mesh Gateway",
-      "description": "A fault‑tolerant mesh networking gateway built for sitios with weak connectivity. Uses watchdog scripts, automatic failover, and a rolling log archive.",
-      "tech": ["Node.js", "Lightweight MQTT", "Mesh Networking", "Shell Scripts"],
-      "status": "Live",
-      "details": "Routes telemetry packets from sensors across a barangay cluster with auto‑repair routines and energy‑aware scheduling."
-    },
-    {
-      "id": 2,
-      "title": "Farm Inventory Dashboard (Offline‑First)",
-      "description": "A locally‑stored, sync‑on‑demand dashboard for small farms with QR tagging for produce and worker logs.",
-      "tech": ["Vanilla JS", "localStorage", "QR API", "Background Sync"],
-      "status": "On‑Field Deployment",
-      "details": "Designed for intermittent electricity with graceful‑degrade UI and farm‑friendly workflows tested with real users."
-    },
-    {
-      "id": 3,
-      "title": "Solar Monitoring Tool",
-      "description": "A lightweight web tool that monitors solar charge levels, battery drift, and cloudy‑day patterns.",
-      "tech": ["JS", "Chart rendering", "Custom Telemetry Parser"],
-      "status": "Used Locally",
-      "details": "Built around actual daily off‑grid constraints: low‑power mode, compressed deltas, and energy‑aware UI behavior."
-    },
-    {
-      "id": 4,
-      "title": "Device Repair Logbook",
-      "description": "A documentation tool for tracking repairs, scavenged parts, and device histories in remote communities.",
-      "tech": ["HTML/CSS", "IndexedDB", "Minimal UI"],
-      "status": "Internal",
-      "details": "Used to maintain long‑term repair notes for routers, laptops, and repurposed devices—supports offline usage and export."
-    },
-    {
-      "id": 5,
-      "title": "Seven Scripts Automation Suite",
-      "description": "A set of tiny scripts automating log cleanup, backup routines, battery alerts, and mesh node recoveries.",
-      "tech": ["Bash", "Python", "Cron"],
-      "status": "Integrated",
-      "details": "Each script solves a fragile pain‑point in off‑grid life: watchdog restart, SD cleanup, CSV→JSON normalization, and more."
-    }
+  "tools": [
+    {"id":"framer","rank":1,"name":"Framer","initials":"Fr","category":"Website builder","price":"Free","rating":4.9,"color":"#b8a8ff","tagline":"Design-led websites with polished motion and a fast publishing loop.","description":"A visual site builder that feels familiar to designers, with responsive layouts, CMS collections, localization, and production hosting built in.","bestFor":"Designers & studios","tags":["designer","portfolio","fast launch","landing page"],"url":"https://www.framer.com/"},
+    {"id":"webflow","rank":2,"name":"Webflow","initials":"W","category":"Website builder","price":"Free","rating":4.8,"color":"#7da7ff","tagline":"Production-grade visual development with a powerful CMS.","description":"A mature visual development platform for custom marketing sites, structured content, and teams that need detailed control without hand-coding everything.","bestFor":"Agencies & marketing","tags":["designer","cms","ecommerce","landing page"],"url":"https://webflow.com/"},
+    {"id":"lovable","rank":3,"name":"Lovable","initials":"Lo","category":"AI app builder","price":"Free","rating":4.7,"color":"#ff8a7a","tagline":"Turn a product idea into a working full-stack web app by chatting.","description":"An AI-first builder focused on shipping functional web applications from natural-language prompts, with editable code and common backend integrations.","bestFor":"Founders & MVPs","tags":["web app","ai","fast launch","database"],"url":"https://lovable.dev/"},
+    {"id":"bubble","rank":4,"name":"Bubble","initials":"Bb","category":"No-code app","price":"Free","rating":4.6,"color":"#a8bfff","tagline":"Complex workflows, data, and user accounts without traditional code.","description":"A deep no-code platform for building multi-user web products with databases, logic, plugins, APIs, and responsive interfaces.","bestFor":"Complex web apps","tags":["web app","database","workflow","marketplace"],"url":"https://bubble.io/"},
+    {"id":"relume","rank":5,"name":"Relume","initials":"Re","category":"AI design","price":"Free trial","rating":4.7,"color":"#d6ff60","tagline":"Generate sitemaps and wireframes before design gets expensive.","description":"An AI-assisted planning and component platform that helps teams move from a short brief to a structured sitemap and wireframe quickly.","bestFor":"Site planning","tags":["designer","wireframe","landing page","agency"],"url":"https://www.relume.io/"},
+    {"id":"squarespace","rank":6,"name":"Squarespace","initials":"Sq","category":"Website builder","price":"Paid","rating":4.5,"color":"#dedbd2","tagline":"A refined all-in-one home for brands, stores, and portfolios.","description":"A managed website platform with strong templates, commerce, scheduling, marketing, and hosting in a cohesive package.","bestFor":"Small businesses","tags":["portfolio","ecommerce","services","fast launch"],"url":"https://www.squarespace.com/"},
+    {"id":"v0","rank":7,"name":"v0","initials":"v0","category":"AI app builder","price":"Free","rating":4.6,"color":"#d5d5d5","tagline":"Generate modern interfaces and full-stack apps from a prompt.","description":"An AI development environment from Vercel for producing React interfaces, connecting data, and moving quickly toward deployable applications.","bestFor":"Developers & teams","tags":["web app","ai","react","prototype"],"url":"https://v0.dev/"},
+    {"id":"wix-studio","rank":8,"name":"Wix Studio","initials":"WS","category":"Website builder","price":"Paid","rating":4.4,"color":"#ffa8de","tagline":"Responsive client websites with agency-friendly workflows.","description":"A professional creation platform combining visual responsive design, CMS, business tools, and multi-site client management.","bestFor":"Agencies","tags":["agency","cms","ecommerce","designer"],"url":"https://www.wix.com/studio"},
+    {"id":"softr","rank":9,"name":"Softr","initials":"So","category":"No-code app","price":"Free","rating":4.4,"color":"#ffd169","tagline":"Build portals and internal tools on top of your business data.","description":"A no-code builder designed for client portals, directories, intranets, and lightweight internal software connected to popular data sources.","bestFor":"Portals & internal tools","tags":["web app","portal","database","directory"],"url":"https://www.softr.io/"},
+    {"id":"shopify","rank":10,"name":"Shopify","initials":"Sh","category":"E-commerce","price":"Trial","rating":4.8,"color":"#a8d993","tagline":"The dependable default for serious online retail.","description":"A commerce platform with mature inventory, payments, fulfillment, analytics, themes, and an extensive app ecosystem.","bestFor":"Online stores","tags":["ecommerce","retail","payments","fast launch"],"url":"https://www.shopify.com/"},
+    {"id":"carrd","rank":11,"name":"Carrd","initials":"Ca","category":"Website builder","price":"Free","rating":4.5,"color":"#a9e7f2","tagline":"Simple, responsive one-page sites at a refreshingly small price.","description":"A focused one-page site builder for profiles, landing pages, forms, and experiments where speed and simplicity matter most.","bestFor":"One-page sites","tags":["landing page","portfolio","fast launch","simple"],"url":"https://carrd.co/"},
+    {"id":"glide","rank":12,"name":"Glide","initials":"Gl","category":"No-code app","price":"Free","rating":4.4,"color":"#8fdcff","tagline":"Turn spreadsheets and operational data into useful business apps.","description":"A visual app platform for creating responsive internal tools and workflows from spreadsheets, SQL, and other business data.","bestFor":"Operations teams","tags":["web app","database","workflow","internal"],"url":"https://www.glideapps.com/"}
   ]
 }

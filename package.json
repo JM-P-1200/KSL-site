@@ -1,0 +1,13 @@
+{
+  "name": "ksl-directory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A curated directory of AI and no-code website builders.",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

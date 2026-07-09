@@ -1,78 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miguiel Encinares – Off-Grid Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KSL is a curated directory of AI and no-code website builders, with practical comparisons for founders, designers, and agencies.">
+  <meta name="theme-color" content="#f5f2ea">
+  <meta property="og:title" content="KSL — Find the right AI website builder">
+  <meta property="og:description" content="Curated AI and no-code tools, compared by use case—not hype.">
+  <meta property="og:type" content="website">
+  <title>KSL — The AI website builder directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
 </head>
-
 <body>
-
-  <!-- HERO SECTION -->
-  <section class="hero glass">
-    <div class="hero-content">
-      <h1 class="hero-title">Living Off-Grid. Building On-Code.</h1>
-      <p class="hero-subtitle">
-        I build small tools, templates, and systems powered by clean code—
-        straight from the mountains of Malico.
-      </p>
-      <a href="projects.html" class="btn-primary">View My Work</a>
+  <a class="skip-link" href="#directory">Skip to directory</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="KSL home"><span class="brand-mark">K</span><span>KSL</span></a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#directory">Directory</a><a href="#collections">Collections</a><a href="blog.html">Field notes</a><a href="about.html">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="text-button saved-trigger" type="button" aria-label="Show saved tools">Saved <span id="saved-count">0</span></button>
+      <a class="button button-small" href="contact.html">Submit a tool <span>↗</span></a>
     </div>
-  </section>
+  </header>
 
-  <!-- WHAT WE DO -->
-  <section class="section glass">
-    <h2 class="section-title">What I Do</h2>
-
-    <div class="grid-3">
-      <div class="card glass-min">
-        <h3>Custom Templates</h3>
-        <p>HTML, CSS, JS templates built from scratch. Clean, fast, and ready to deploy on any static host.</p>
+  <main>
+    <section class="hero-shell">
+      <div class="eyebrow"><span class="status-dot"></span> Independent. Curated weekly.</div>
+      <h1>Build the web<br><em>without the maze.</em></h1>
+      <p class="hero-copy">The considered directory for AI and no-code website builders. Compare tools by what they’re actually good at, then get building.</p>
+      <form class="hero-search" id="hero-search" role="search">
+        <label class="sr-only" for="hero-search-input">Search tools</label>
+        <span aria-hidden="true">⌕</span>
+        <input id="hero-search-input" type="search" placeholder="What are you trying to build?" autocomplete="off">
+        <button type="submit">Explore tools <span>→</span></button>
+      </form>
+      <div class="quick-links" aria-label="Popular searches"><span>Popular:</span><button data-query="portfolio">Portfolio</button><button data-query="landing page">Landing page</button><button data-query="ecommerce">E-commerce</button><button data-query="web app">Web app</button></div>
+      <div class="hero-stat">
+        <div class="avatar-stack" aria-hidden="true"><span>AI</span><span>UX</span><span>NC</span></div>
+        <p><strong id="tool-total">24</strong> tools reviewed<br><span>No pay-to-rank listings.</span></p>
       </div>
+    </section>
 
-      <div class="card glass-min">
-        <h3>Client Work</h3>
-        <p>I help small businesses and off-grid entrepreneurs build simple digital systems that actually work.</p>
+    <section class="trust-strip" aria-label="Directory principles">
+      <p>Less scrolling. Better building.</p>
+      <div><span>01</span> Human-curated</div><div><span>02</span> Use-case tested</div><div><span>03</span> Plain-English verdicts</div>
+    </section>
+
+    <section class="directory-section" id="directory">
+      <div class="section-heading">
+        <div><p class="kicker">Explore the directory</p><h2>Find your building block.</h2></div>
+        <p>From a one-page launch to a full product—filter the noise and find a tool that fits.</p>
       </div>
-
-      <div class="card glass-min">
-        <h3>Experimental Tools</h3>
-        <p>Little scripts and prototypes created while exploring code in the quiet hills of Umingan Range.</p>
+      <div class="directory-toolbar">
+        <div class="filter-row" id="category-filters" role="group" aria-label="Filter by category"></div>
+        <div class="tool-controls">
+          <label class="inline-search"><span>⌕</span><input id="directory-search" type="search" placeholder="Search directory" aria-label="Search directory"></label>
+          <select id="sort-select" aria-label="Sort tools"><option value="featured">Sort: Featured</option><option value="rating">Highest rated</option><option value="name">A–Z</option></select>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="results-meta"><p id="results-count" aria-live="polite">Loading tools…</p><button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button></div>
+      <div class="tool-grid" id="tool-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>No exact matches yet.</h3><p>Try a broader category or a different search term.</p><button class="button" type="button" id="empty-reset">Reset directory</button></div>
+    </section>
 
-  <!-- WHY I DO IT -->
-  <section class="section glass">
-    <h2 class="section-title">Why I Do It</h2>
-    <p class="section-desc">
-      Building things keeps me grounded. It helps me turn pain into productivity, 
-      solitude into clarity, and ideas into something useful.  
-      <br><br>
-      The world is loud—but code stays honest. Even when life isn’t.
-    </p>
-  </section>
+    <section class="collections-section" id="collections">
+      <div class="section-heading light">
+        <div><p class="kicker">Curated shortcuts</p><h2>Start with a good question.</h2></div>
+        <p>Small collections for the moments when “it depends” isn’t a useful answer.</p>
+      </div>
+      <div class="collection-grid">
+        <button class="collection-card lime" data-query="fast launch"><span class="collection-number">01 / 03</span><h3>I need to launch by Friday.</h3><p>Fast, opinionated builders with excellent templates and minimal setup.</p><span class="collection-link">See the shortlist →</span></button>
+        <button class="collection-card coral" data-query="designer"><span class="collection-number">02 / 03</span><h3>I care about every pixel.</h3><p>Flexible visual tools for designers who refuse to settle for generic.</p><span class="collection-link">See the shortlist →</span></button>
+        <button class="collection-card blue" data-query="web app"><span class="collection-number">03 / 03</span><h3>I’m building a real product.</h3><p>Full-stack platforms for logic, data, users, and room to grow.</p><span class="collection-link">See the shortlist →</span></button>
+      </div>
+    </section>
 
-  <!-- PROJECT OVERVIEW -->
-  <section class="section glass">
-    <h2 class="section-title">Project Overview</h2>
-    <p class="section-desc">Here are some of the template-based projects I’ve built recently:</p>
+    <section class="newsletter">
+      <div><p class="kicker">The useful internet</p><h2>One sharp tool.<br>Every other Tuesday.</h2></div>
+      <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter"><label for="newsletter-email">Your email address</label><div><input id="newsletter-email" name="email" type="email" placeholder="you@company.com" required><button type="submit">Join the list →</button></div><p>No growth hacks. No daily noise. Unsubscribe whenever.</p></form>
+    </section>
+  </main>
 
-    <div id="project-list" class="project-grid">
-      <!-- script.js will inject dynamic content here -->
-    </div>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">K</span><span>KSL</span></a>
+    <p>Better tools. Better websites.<br>Built from the mountains, for everywhere.</p>
+    <div><a href="#directory">Directory</a><a href="about.html">Method</a><a href="contact.html">Submit</a><a href="blog.html">Notes</a></div>
+    <p class="copyright">© <span id="year"></span> KSL Directory</p>
+  </footer>
 
-    <a href="projects.html" class="btn-secondary">See All Projects</a>
-  </section>
-
-  <!-- CTA FOOTER -->
-  <section class="cta glass">
-    <h2>Want to collaborate?</h2>
-    <p>I’m off-grid, but never offline. Message me anytime.</p>
-    <a href="contact.html" class="btn-primary">Contact Me</a>
-  </section>
-
+  <dialog id="tool-dialog" class="tool-dialog"><div id="dialog-content"></div><button class="dialog-close" type="button" aria-label="Close">×</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
