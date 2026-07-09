@@ -17,10 +17,18 @@ Open `http://127.0.0.1:4173`. The local server is required because directory and
 
 - Directory entries: `data/projects.json`
 - Field notes: `data/blogs.json`
-- Submission and newsletter forms: Netlify Forms
+- Submission and newsletter forms: Vercel Function at `api/submit.js`
 
-## Deployment
+## Vercel deployment
 
-The repository is configured for Netlify with security headers and static asset caching. Create a new site from this repository and deploy with no build command; the publish directory is `.`.
+Import the repository into Vercel. The included `vercel.json` supplies security headers, clean URLs, and caching; Vercel will serve the static pages and detect the API function automatically.
+
+Add these environment variables in **Project Settings → Environment Variables**:
+
+- `RESEND_API_KEY` — API key from Resend
+- `SUBMISSION_EMAIL` — inbox that receives submissions
+- `SUBMISSION_FROM` — optional verified sender, such as `KSL <hello@yourdomain.com>`
+
+Redeploy after adding environment variables. Until they are configured, forms return a clear configuration message instead of discarding submissions.
 
 Before connecting a custom domain, add its absolute URL to canonical and social metadata and submit a domain-specific `sitemap.xml`.

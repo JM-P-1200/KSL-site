@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import { constants } from "node:fs";
 
 const pages = ["index.html", "about.html", "blog.html", "contact.html", "projects.html", "404.html"];
-const assets = ["style.css", "app.js", "blog-renderer.js", "data/projects.json", "data/blogs.json"];
+const assets = ["style.css", "app.js", "forms.js", "blog-renderer.js", "data/projects.json", "data/blogs.json", "vercel.json"];
 const failures = [];
 
 for (const file of [...pages, ...assets]) {

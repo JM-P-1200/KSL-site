@@ -2,10 +2,12 @@
   "name": "ksl-directory",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "A curated directory of AI and no-code website builders.",
   "scripts": {
     "check": "node scripts/check-site.mjs",
-    "serve": "node scripts/serve.mjs"
+    "serve": "node scripts/serve.mjs",
+    "vercel-build": "npm run check"
   },
   "engines": {
     "node": ">=18"
