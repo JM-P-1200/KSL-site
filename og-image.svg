@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title>KSL social preview image</title>
+  <desc>A dark editorial card for KSL, the AI website builder directory.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5f2ea"/>
+      <stop offset="1" stop-color="#e5dac2"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="126" y1="76" x2="1080" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#18261f"/>
+      <stop offset="1" stop-color="#0d1512"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="76" y="62" width="1048" height="506" rx="42" fill="url(#panel)"/>
+  <circle cx="1015" cy="154" r="86" fill="#f5f2ea" opacity=".08"/>
+  <circle cx="176" cy="492" r="126" fill="#f6d98f" opacity=".08"/>
+  <rect x="126" y="112" width="112" height="112" rx="30" fill="#f5f2ea"/>
+  <path d="M157 145h17v35l31-35h20l-32 36 34 31h-23l-30-28v28h-17v-67Z" fill="#14211b"/>
+  <circle cx="219" cy="145" r="8" fill="#c89d42"/>
+  <text x="126" y="300" fill="#d9b95f" font-family="Manrope, Inter, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="7">KSL DIRECTORY</text>
+  <text x="126" y="382" fill="#fff8e9" font-family="Manrope, Inter, Arial, sans-serif" font-size="72" font-weight="800">AI website builders,</text>
+  <text x="126" y="462" fill="#fff8e9" font-family="Manrope, Inter, Arial, sans-serif" font-size="72" font-weight="800">curated by use case.</text>
+  <text x="128" y="522" fill="#d9cba8" font-family="Manrope, Inter, Arial, sans-serif" font-size="28" font-weight="600">Find the right no-code and AI web tool without the maze.</text>
+</svg>
