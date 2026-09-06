@@ -1,0 +1,149 @@
+{
+  "stages": [
+    {
+      "slug": "discover",
+      "order": 1,
+      "title": "Discover",
+      "goal": "Choose a business idea that fits your skills, audience, and available resources.",
+      "deliverable": "A validated website-business concept and problem statement.",
+      "summary": "Start with what you know, who you can help, and what problem is worth solving.",
+      "tasks": [
+        "List your skills, interests, resources, and constraints.",
+        "Choose one audience you understand or can reach.",
+        "Write the problem your website or business will solve.",
+        "Validate the idea with three quick evidence checks."
+      ],
+      "worksheet": [
+        {"id": "skills", "label": "What skills, experience, or resources can you use?", "type": "textarea"},
+        {"id": "audience", "label": "Who do you want to help first?", "type": "textarea"},
+        {"id": "problem", "label": "What painful or useful problem will the website solve?", "type": "textarea"},
+        {"id": "validation", "label": "What evidence shows people may want this?", "type": "textarea"}
+      ],
+      "resources": ["idea-validation-worksheet", "philippines-small-business-guide", "beginner-tool-map"],
+      "freePreview": true
+    },
+    {
+      "slug": "plan",
+      "order": 2,
+      "title": "Plan",
+      "goal": "Turn the idea into a simple website brief, sitemap, and business model.",
+      "deliverable": "A project brief with target customer, offer, pages, and sitemap.",
+      "summary": "Decide what the website must say, what it must do, and how it supports the business.",
+      "tasks": ["Define your target customers.", "Select a business model.", "Identify required pages.", "Draft a sitemap and project brief."],
+      "worksheet": [{"id": "customers", "label": "Describe your first target customer.", "type": "textarea"}, {"id": "pages", "label": "List your required website pages.", "type": "textarea"}],
+      "resources": ["website-brief-template", "sitemap-checklist"],
+      "freePreview": true
+    },
+    {
+      "slug": "build",
+      "order": 3,
+      "title": "Build",
+      "goal": "Choose a build method and assemble the essential website pages.",
+      "deliverable": "A working draft website with brand, content, and core pages.",
+      "summary": "Pick the right path: no-code, CMS, custom development, or assisted KSL build.",
+      "tasks": ["Choose a building method.", "Prepare brand basics.", "Create essential pages.", "Test the core user journey."],
+      "worksheet": [{"id": "method", "label": "Which build method fits your budget and skill level?", "type": "textarea"}],
+      "resources": ["beginner-tool-map", "component-starter-kit"],
+      "freePreview": false
+    },
+    {
+      "slug": "launch",
+      "order": 4,
+      "title": "Launch",
+      "goal": "Publish the website and confirm it works on real devices.",
+      "deliverable": "A public website with domain, analytics, tested links, and working forms.",
+      "summary": "Make the project real: deploy, connect, test, and document what changed.",
+      "tasks": ["Deploy the website.", "Connect a custom domain.", "Configure analytics.", "Test performance, forms, links, and responsiveness."],
+      "worksheet": [{"id": "launchChecklist", "label": "Paste launch notes, test results, or blockers.", "type": "textarea"}],
+      "resources": ["launch-readiness-checklist", "analytics-basics"],
+      "freePreview": false
+    },
+    {
+      "slug": "rank",
+      "order": 5,
+      "title": "Rank",
+      "goal": "Make the website understandable to search engines and useful for searchers.",
+      "deliverable": "Optimized titles, descriptions, headings, internal links, sitemap, and submission checklist.",
+      "summary": "SEO is not magic. It is clarity, structure, evidence, and useful pages.",
+      "tasks": ["Map keywords to pages.", "Write titles and meta descriptions.", "Improve headings and internal links.", "Prepare Search Console submission."],
+      "worksheet": [{"id": "keywords", "label": "What searches should your pages answer?", "type": "textarea"}],
+      "resources": ["seo-title-template", "local-seo-ph"],
+      "freePreview": false
+    },
+    {
+      "slug": "market",
+      "order": 6,
+      "title": "Market",
+      "goal": "Create a practical content system that brings attention back to the website.",
+      "deliverable": "A channel choice, content pillars, and a simple publishing calendar.",
+      "summary": "Turn your website pages and building journey into useful public proof.",
+      "tasks": ["Choose one or two channels.", "Define content pillars.", "Create a two-week content calendar.", "Track visits and inquiries."],
+      "worksheet": [{"id": "contentPillars", "label": "What three topics can you post about repeatedly?", "type": "textarea"}],
+      "resources": ["content-calendar-template", "creator-launch-playbook"],
+      "freePreview": false
+    },
+    {
+      "slug": "monetize",
+      "order": 7,
+      "title": "Monetize",
+      "goal": "Choose one clear income model and conversion path.",
+      "deliverable": "An offer, price, buying path, and first conversion experiment.",
+      "summary": "Make the website ask for a sensible next step, not just admiration.",
+      "tasks": ["Choose an income model.", "Define your offer and price.", "Create a conversion path.", "Plan a first revenue experiment."],
+      "worksheet": [{"id": "offer", "label": "What exactly can someone buy, book, or request?", "type": "textarea"}],
+      "resources": ["offer-pricing-worksheet", "lead-generation-flow"],
+      "freePreview": false
+    },
+    {
+      "slug": "operate",
+      "order": 8,
+      "title": "Operate",
+      "goal": "Set up simple workflows for inquiries, customers, delivery, and finances.",
+      "deliverable": "A basic operating system for leads, tasks, income, expenses, and support.",
+      "summary": "A small business gets calmer when repeated work has a home.",
+      "tasks": ["Capture inquiries consistently.", "Track customers and tasks.", "Record income and expenses.", "Document delivery and support workflows."],
+      "worksheet": [{"id": "workflow", "label": "What happens after someone contacts or buys from you?", "type": "textarea"}],
+      "resources": ["simple-crm-template", "operations-checklist"],
+      "freePreview": false
+    },
+    {
+      "slug": "scale",
+      "order": 9,
+      "title": "Scale",
+      "goal": "Use real numbers to decide what to improve next.",
+      "deliverable": "A 30-day and 90-day growth plan with measurable targets.",
+      "summary": "Growth becomes practical when bottlenecks, process, and targets are visible.",
+      "tasks": ["Review traffic, leads, conversion, and revenue.", "Find the biggest bottleneck.", "Automate or document one repeated task.", "Set 30-day and 90-day objectives."],
+      "worksheet": [{"id": "growthTargets", "label": "What will you improve in the next 30 and 90 days?", "type": "textarea"}],
+      "resources": ["growth-scorecard", "automation-map"],
+      "freePreview": false
+    }
+  ],
+  "resources": [
+    {"id": "idea-validation-worksheet", "title": "Idea Validation Worksheet", "stage": "discover", "type": "worksheet", "difficulty": "beginner", "access": "free", "description": "A simple evidence-gathering worksheet before you build.", "url": "build-lab/stages/discover.html"},
+    {"id": "philippines-small-business-guide", "title": "Small Business Website Guide for the Philippines", "stage": "discover", "type": "guide", "difficulty": "beginner", "access": "free", "description": "Questions for local service providers, shops, and freelancers.", "url": "build-lab.html"},
+    {"id": "beginner-tool-map", "title": "Beginner Tool Map", "stage": "build", "type": "recommended tool", "difficulty": "beginner", "access": "free", "description": "Match your project to no-code, CMS, AI, or custom build paths.", "url": "index.html#directory"},
+    {"id": "website-brief-template", "title": "Website Brief Template", "stage": "plan", "type": "template", "difficulty": "beginner", "access": "builder", "description": "A fill-in project brief for your offer, pages, and launch scope.", "url": "build-lab/stages/plan.html"},
+    {"id": "sitemap-checklist", "title": "Sitemap Checklist", "stage": "plan", "type": "checklist", "difficulty": "beginner", "access": "free", "description": "Pick the pages your first website actually needs.", "url": "build-lab/stages/plan.html"},
+    {"id": "component-starter-kit", "title": "Landing Page Component Starter Kit", "stage": "build", "type": "component", "difficulty": "intermediate", "access": "builder", "description": "Hero, proof, offer, FAQ, and contact blocks for first launches.", "url": "build-lab/stages/build.html"},
+    {"id": "launch-readiness-checklist", "title": "Launch Readiness Checklist", "stage": "launch", "type": "checklist", "difficulty": "beginner", "access": "builder", "description": "Deployment, domain, analytics, responsiveness, links, and forms.", "url": "build-lab/stages/launch.html"},
+    {"id": "analytics-basics", "title": "Analytics Basics", "stage": "launch", "type": "guide", "difficulty": "beginner", "access": "free", "description": "Track only what helps you improve the business.", "url": "build-lab/stages/launch.html"},
+    {"id": "seo-title-template", "title": "SEO Title and Description Template", "stage": "rank", "type": "template", "difficulty": "beginner", "access": "business", "description": "Write search snippets without hype or ranking promises.", "url": "build-lab/stages/rank.html"},
+    {"id": "local-seo-ph", "title": "Local SEO Starter Guide", "stage": "rank", "type": "guide", "difficulty": "intermediate", "access": "business", "description": "Local search basics for Philippine service businesses.", "url": "build-lab/stages/rank.html"},
+    {"id": "content-calendar-template", "title": "Two-Week Content Calendar", "stage": "market", "type": "template", "difficulty": "beginner", "access": "business", "description": "Turn website sections into helpful posts and proof.", "url": "build-lab/stages/market.html"},
+    {"id": "creator-launch-playbook", "title": "Creator Launch Playbook", "stage": "market", "type": "guide", "difficulty": "intermediate", "access": "business", "description": "Document the build and send attention back to the website.", "url": "build-lab/stages/market.html"},
+    {"id": "offer-pricing-worksheet", "title": "Offer and Pricing Worksheet", "stage": "monetize", "type": "worksheet", "difficulty": "beginner", "access": "business", "description": "Name the offer, price, promise, and next step.", "url": "build-lab/stages/monetize.html"},
+    {"id": "lead-generation-flow", "title": "Lead Generation Flow", "stage": "monetize", "type": "checklist", "difficulty": "intermediate", "access": "business", "description": "Connect pages, forms, replies, and follow-up.", "url": "build-lab/stages/monetize.html"},
+    {"id": "simple-crm-template", "title": "Simple CRM Template", "stage": "operate", "type": "template", "difficulty": "beginner", "access": "business", "description": "Track inquiries, customers, tasks, and next actions.", "url": "build-lab/stages/operate.html"},
+    {"id": "operations-checklist", "title": "Operations Checklist", "stage": "operate", "type": "checklist", "difficulty": "beginner", "access": "business", "description": "Delivery, support, finance, and maintenance basics.", "url": "build-lab/stages/operate.html"},
+    {"id": "growth-scorecard", "title": "Growth Scorecard", "stage": "scale", "type": "worksheet", "difficulty": "intermediate", "access": "business", "description": "Review traffic, leads, conversion, revenue, and bottlenecks.", "url": "build-lab/stages/scale.html"},
+    {"id": "automation-map", "title": "Automation Opportunity Map", "stage": "scale", "type": "guide", "difficulty": "intermediate", "access": "managed", "description": "Find the repeated work worth automating first.", "url": "build-lab/stages/scale.html"}
+  ],
+  "tiers": {
+    "free": ["roadmap", "introductory lessons", "limited resources", "demo project"],
+    "builder": ["complete guided lessons", "premium templates", "launch resources", "project tracking"],
+    "business": ["SEO", "marketing", "monetization", "operations", "growth planning"],
+    "assisted": ["KSL review", "technical consultation", "implementation help"],
+    "managed": ["hosting", "maintenance", "SEO support", "content support", "system upgrades"]
+  }
+}

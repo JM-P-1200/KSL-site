@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="KSL Build Lab learner dashboard for tracking website-business progress.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#18261f">
+  <title>Build Lab dashboard — KSL</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="build-lab.js"></script>
+</head>
+<body data-build-lab-page="dashboard">
+  <header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">K</span><span>KSL</span></a><nav class="desktop-nav"><a href="../build-lab.html">Build Lab</a><a href="dashboard.html" aria-current="page">Dashboard</a><a href="resources.html">Resources</a><a href="projects/demo.html">Project</a></nav><div class="header-actions"><a class="button button-small" href="#" data-continue-link>Continue →</a></div></header>
+  <main>
+    <section class="page-hero"><p class="eyebrow"><span class="status-dot"></span> Demo workspace</p><h1>Welcome back, <em data-learner-name>KSL Builder</em>.</h1><p data-project-description>Your Build Lab project will appear here.</p></section>
+    <section class="lab-section"><div class="dashboard-grid"><article class="lab-panel dark"><p class="kicker">Current project</p><h2 data-project-name>Demo project</h2><p>Current stage: <strong data-current-stage>Discover</strong></p><div class="progress-shell"><span class="progress-bar" data-progress-bar></span></div><p><strong data-completion>0%</strong> complete</p><div class="metric-grid"><div class="metric"><span>Traffic</span><strong data-traffic>0</strong></div><div class="metric"><span>Leads</span><strong data-leads>0</strong></div><div class="metric"><span>Revenue</span><strong data-revenue>₱0</strong></div></div><div class="inline-nav"><a class="button" href="#" data-continue-link>Continue learning →</a><a class="button button-secondary" href="start.html">Edit project</a></div></article><aside class="lab-panel"><p class="kicker">Recommended next action</p><h2 data-next-action>Start Discover.</h2><div class="project-links"><div><span>Website URL</span><strong data-website-url>Add after launch</strong></div><div><span>Repository URL</span><strong data-repository-url>Add when available</strong></div></div></aside></div></section>
+    <section class="lab-section alt"><div class="section-heading"><div><p class="kicker">Nine-stage roadmap</p><h2>One step at a time.</h2></div><p>Stages unlock in sequence so the dashboard stays focused and beginner-friendly.</p></div><div class="roadmap-grid" id="stage-roadmap"></div></section>
+    <section class="lab-section"><div class="dashboard-grid"><article><p class="kicker">Completed milestones</p><ul class="milestone-list" id="milestone-list"></ul></article><article><p class="kicker">Recently useful resources</p><div class="resource-grid" id="recent-resources"></div></article></div></section>
+  </main>
+</body>
+</html>

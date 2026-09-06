@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Create a demo-safe KSL Build Lab website project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#18261f">
+  <title>Start Build Lab — KSL</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="build-lab.js"></script>
+</head>
+<body data-build-lab-page="start">
+  <header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">K</span><span>KSL</span></a><nav class="desktop-nav"><a href="../build-lab.html">Build Lab</a><a href="dashboard.html">Dashboard</a><a href="resources.html">Resources</a></nav><div class="header-actions"><button class="button button-small" type="button" data-load-demo>Load demo project</button></div></header>
+  <main>
+    <section class="page-hero"><p class="eyebrow"><span class="status-dot"></span> Start Build Lab</p><h1>Create your <em>website project.</em></h1><p>This MVP stores progress locally in your browser. It is demo-safe and does not write to production customer data.</p></section>
+    <section class="lab-section"><form class="lab-form" id="project-form"><div class="lab-form-grid"><label class="field"><span>Learner name</span><input name="learnerName" value="KSL Builder"></label><label class="field"><span>Project name</span><input name="projectName" required placeholder="My first website business"></label><label class="field"><span>Business or niche</span><input name="niche" placeholder="Local services, portfolio, shop"></label></div><label class="field"><span>Project description</span><textarea name="description" required placeholder="What are you building and why?"></textarea></label><div class="lab-form-grid"><label class="field"><span>Target audience</span><input name="audience" required placeholder="Who is this for?"></label><label class="field"><span>Business model</span><select name="businessModel" required><option value="">Choose one</option><option value="services">Services</option><option value="ecommerce">E-commerce</option><option value="digital-products">Digital products</option><option value="subscriptions">Subscriptions</option><option value="affiliate">Affiliate</option><option value="lead-generation">Lead generation</option></select></label><label class="field"><span>Build method</span><select name="buildMethod"><option value="no-code">No-code</option><option value="cms">CMS</option><option value="custom">Custom development</option><option value="assisted">Assisted KSL build</option></select></label></div><div class="lab-form-grid"><label class="field"><span>Website URL</span><input name="websiteUrl" placeholder="https://"></label><label class="field"><span>Repository URL</span><input name="repositoryUrl" placeholder="https://"></label><label class="field"><span>Traffic target</span><input name="trafficTarget" type="number" min="0" value="100"></label></div><div class="lab-form-grid"><label class="field"><span>Lead target</span><input name="leadTarget" type="number" min="0" value="5"></label><label class="field"><span>Revenue target</span><input name="revenueTarget" type="number" min="0" value="0"></label><label class="field"><span>Private notes</span><input name="notes" placeholder="Anything to remember"></label></div><button class="button" type="submit">Save and open dashboard →</button><p data-form-message class="muted"></p></form></section>
+  </main>
+</body>
+</html>

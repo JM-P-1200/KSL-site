@@ -8,9 +8,25 @@ const server = http.createServer(async (request, response) => {
   try {
     const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
     let relative = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
-    const file = normalize(join(process.cwd(), relative));
+    if (pathname !== "/" && !extname(relative)) {
+      try {
+        await stat(join(process.cwd(), `${relative}.html`));
+        relative = `${relative}.html`;
+      } catch {}
+    }
+    let file = normalize(join(process.cwd(), relative));
     if (!file.startsWith(process.cwd())) throw new Error("Invalid path");
-    if ((await stat(file)).isDirectory()) relative = join(relative, "index.html");
+    try {
+      if ((await stat(file)).isDirectory()) relative = join(relative, "index.html");
+    } catch {
+      if (!extname(relative)) {
+        const htmlRelative = `${relative}.html`;
+        await stat(join(process.cwd(), htmlRelative));
+        relative = htmlRelative;
+      } else {
+        throw new Error("Missing file");
+      }
+    }
     const body = await readFile(join(process.cwd(), relative));
     response.writeHead(200, { "Content-Type": types[extname(relative)] || "application/octet-stream", "Cache-Control": "no-cache" });
     response.end(body);
