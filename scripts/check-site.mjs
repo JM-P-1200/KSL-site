@@ -20,6 +20,7 @@ await collectHtml();
 const assets = [
   "style.css",
   "services.css",
+  "privacy.css",
   "app.js",
   "forms.js",
   "blog-renderer.js",
@@ -60,7 +61,7 @@ for (const file of pages) {
   }
 }
 
-for (const file of ["api/submit.js", "forms.js"]) {
+for (const file of ["api/submit.js", "lib/submission-guard.js", "forms.js"]) {
   try {
     execFileSync(process.execPath, ["--check", file], { stdio: "pipe" });
   } catch {

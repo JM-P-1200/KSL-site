@@ -24,9 +24,11 @@ test("submission validation and email handoff", async (t) => {
   process.env.SUBMISSION_EMAIL = "recipient@example.com";
   process.env.SUBMISSION_FROM = "KSL <test@example.com>";
   const fetchMock = t.mock.method(globalThis, "fetch", async () => ({ ok: true, json: async () => ({ id: "test-email-id" }) }));
+  let sequence = 0;
   async function submit(body = inquiry, method = "POST") {
-    const response = { status(code) { this.code = code; return this; }, json(payload) { this.payload = payload; return this; } };
-    await handler({ method, body }, response);
+    body = { ...body, email: body.email === inquiry.email ? `qa-${sequence++}@example.com` : body.email };
+    const response = { setHeader() {}, status(code) { this.code = code; return this; }, json(payload) { this.payload = payload; return this; } };
+    await handler({ method, body, headers: { "content-type": "application/json" } }, response);
     return response;
   }
   await t.test("accepts an inquiry and preserves contact text", async () => {
@@ -35,7 +37,7 @@ test("submission validation and email handoff", async (t) => {
     const [url, options] = fetchMock.mock.calls.at(-1).arguments;
     assert.equal(url, "https://api.resend.com/emails");
     const sent = JSON.parse(options.body);
-    assert.equal(sent.reply_to, inquiry.email);
+    assert.equal(sent.reply_to, "qa-0@example.com");
     assert.deepEqual(sent.to, [process.env.SUBMISSION_EMAIL]);
     assert.match(sent.text, /Name: Maria Santos/);
     assert.match(sent.text, /Website: https:\/\/example.com/);
@@ -114,5 +116,15 @@ test("successful responses clear inputs and duplicate pending submissions are ig
   await pending;
   assert.equal(h.form.resets, 1);
   assert.equal(h.status.className, "success");
+  assert.equal(h.button.disabled, false);
+});
+
+
+test("rate-limit responses keep inputs and show the retry guidance", async () => {
+  const h = formHarness(async () => ({ ok: false, json: async () => ({ error: "Too many submissions. Please wait a few minutes before trying again." }) }));
+  await h.submit();
+  assert.equal(h.form.resets, 0);
+  assert.equal(h.status.className, "error");
+  assert.match(h.status.textContent, /wait a few minutes/);
   assert.equal(h.button.disabled, false);
 });
