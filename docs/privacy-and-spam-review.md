@@ -1,57 +1,69 @@
-# Privacy notice and submission protection — review checklist
+# Privacy notice and submission protection — release review
 
-Prepared October 28, 2026. This is a review branch; do not merge or release until the owner confirms the notice details.
+Updated October 28, 2026 (Asia/Manila). Changes are prepared for review; this PR does not change production.
 
-## Decisions still needed
+## Confirmed owner decisions
 
-- [x] Owner confirmed the operator: Japhet Palmare operating KSL.
-- [x] Owner approved publishing japhmiguel@gmail.com as the privacy contact, replacing the earlier business-email preference.
-- [x] Owner approved 12-month retention for closed inquiries and will personally handle deletion reviews.
-- [ ] Confirm mailbox, Resend, and hosting retention settings. Japhet Palmare is responsible for manual deletion reviews.
-- [x] Replace the operator, contact and retention draft fields with the owner's confirmed details.
-- [ ] Remove the draft banner and set an effective date after final release approval.
+- [x] Operator: **Japhet Palmare operating KSL** (owner-supplied spelling).
+- [x] Privacy contact: **japhmiguel@gmail.com**, approved for public display.
+- [x] Closed inquiries: maximum **12 months after last meaningful contact**, unless necessary legal retention applies.
+- [x] Japhet Palmare personally handles deletion reviews.
+- [x] Monthly manual Gmail cleanup procedure documented below.
+- [x] Notice draft banner removed; applicability begins when published to production. Last-updated date is not a claim that production already changed.
+- [ ] Account-specific Resend plan or custom retention arrangement confirmed.
+- [ ] Owner approves merging and production release.
 
-The approved 12 months is the owner's operational choice, not a period prescribed by the NPC. No provider retention settings or existing emails are changed by this PR. The draft is deliberately marked noindex; decide whether to remove that tag when publishing.
+The approved 12 months is the owner's operating policy, not a period prescribed by the NPC. No mailbox deletion, provider setting, paid service, credential, firewall or production change is performed by this PR.
 
-## What this branch changes
+## What was verified, and what was not
 
-- Adds a readable privacy notice linked beside service consent, tool submissions, newsletter requests, and the relevant footers.
-- Describes hosting/email processing, optional fields, non-marketing use of inquiries, request rights, browser storage and external fonts.
-- Keeps the existing honeypot and prevents its submissions from reaching Resend.
-- Requires JSON objects with string fields; rejects cross-site browser submissions, oversized bodies, invalid/overlong fields, and website URLs containing credentials.
-- Adds synchronous per-instance rate limits: five submissions per IP per minute and three per email per ten minutes. Shared across newsletter, tool submission, and service inquiry within one instance.
-- Returns HTTP 429 with Retry-After and a useful message while retaining form inputs.
-- Stores keyed fingerprints in bounded process memory, not raw IP/email values; no Redis, paid service, CAPTCHA, credentials, or firewall-setting changes.
-- Keeps application responses non-cacheable and provides Allow: POST on method errors.
+- Reviewed Google's published Gmail behavior: deleted messages move to Trash and are normally permanently deleted after 30 days.
+- Reviewed Resend's published policy: 30-day email/log retention on Free, Pro and Scale; seven-day backups; Enterprise/custom retention can differ. Earlier deletion can require provider support.
+- Resend's account page requires a separate sign-in in this browser. **The actual account plan/custom terms were not verified.** Do not label that item completed based solely on public documentation.
+- Gmail labels, filters, account backup/export settings and actual mailbox deletion have not been inspected or changed.
+- The public notice describes the standard provider policy with its plan qualification; it does not claim this account was audited.
 
-## Important limits
+## Monthly Gmail cleanup — owner's procedure
 
-These counters are **best-effort per warm function instance**, not a global quota. Cold starts, multiple regions/instances, and varied source/email combinations can bypass aggregate limits. Email-based limits can also temporarily affect a shared address. The store expires entries lazily on the next request or disappears when the instance is recycled. Platform request parsing happens before the application's 16 KiB body check.
+1. Keep KSL conversations identifiable as Active, Closed or Client. Labels are organizational only and do not delete copies. No labels are created by this PR.
+2. Review Closed inquiries monthly, beginning when the last meaningful contact is about **10 months old**. Record the relevant last-contact date; do not rely only on the date of the first incoming message.
+3. Review the complete inquiry conversation: received messages, sent replies, attachments, and any downloaded/exported copies under your control. Archiving a thread is not deletion.
+4. Exclude active work and records needed for a client engagement, contract, invoice, legal obligation or dispute. Record the reason for any retention exception and review it again.
+5. For records due for disposal, move the identified KSL messages to Trash **at least 45 days before the 12-month deadline**. This allows for Gmail's normal 30-day Trash period and review timing.
+6. At the next review, check that due items are no longer in the active mailbox/archive or recoverable Trash. If something remains, review those specific messages. Never indiscriminately empty a personal account's entire Trash.
+7. Permanent deletion is irreversible and requires the owner's deliberate action. No unattended deletion script or bulk purge is configured.
+8. Keep a minimal cleanup record (review date, date range, number of threads removed and exceptions) without copying inquiry content or unnecessary contact details into it.
+9. An individual deletion request may need earlier action and separate review of Resend/provider copies. Contact provider support if required; do not promise a Gmail deletion removes every provider copy.
 
-Origin checking stops ordinary cross-site browser posts, not scripts capable of spoofing headers. The honeypot is one bot signal, not human verification. No claim of complete spam prevention is made.
+Gmail/Resend backup and infrastructure retention is provider-controlled; distinguish removing accessible mailbox records from erasing all physical backups.
 
-For sustained abuse, use a shared atomic counter or a reviewed Vercel Firewall rule after the owner approves the provider, cost and access/configuration change. Do not silently enable a new provider or weaken Deployment Protection.
+## Implementation and limits
 
-## Verification
+- Notice links beside service consent, tool submissions, newsletter requests, and relevant footers.
+- Inquiry processing is separate from marketing.
+- JSON/string-field validation, 16 KiB parsed-body check, length limits, HTTP/HTTPS URL checks, credential-free URLs and cross-site browser checks.
+- Existing honeypots, plus newsletter honeypot; trapped submissions do not reach Resend.
+- Best-effort **per warm function instance** quotas: five submissions per IP per minute and three per email per ten minutes, shared across form types.
+- Keyed fingerprints and counts in bounded process memory, not raw IP/email values; lazy expiration or instance recycling.
+- HTTP 429 with Retry-After and preserved form inputs; responses use no-store.
+- Cold starts, multiple instances/regions and varied identities can bypass aggregate quotas. These are not distributed rate limits. Origin checks do not stop scripts spoofing headers.
+- Stronger global limits would need separately approved shared storage or reviewed platform firewall rules.
+
+## Validation and release sequence
 
 - Run `npm run vercel-build` and `git diff --check`.
-- Check preview notice links, readable layout, consent interaction, and unchanged prices.
-- Submit one labeled normal preview inquiry; verify email-provider acceptance.
-- Use local mocked tests for burst limits and malformed requests instead of sending spam or bursts of real emails.
-- Owner reviews draft identity/contact/retention before merge; production remains unchanged.
-
-## Operational follow-through before publishing
-
-1. Assign a person to monitor the privacy mailbox and respond to requests.
-2. Record which inbox/provider folders hold submissions; approve a deletion review routine.
-3. On deletion requests, review mailbox/provider copies and any legitimate retention obligations; do not treat deleting a browser form as deleting email records.
-4. Never request passwords or identity documents through the public form.
+- Check the latest preview's privacy page, mailto link, notice links, layout and unchanged service prices.
+- Earlier application smoke test succeeded and Resend accepted the labeled preview inquiry; content-only edits do not require more real emails.
+- Verify account-specific Resend retention, resolve any conflict with the notice, and obtain final merge/release approval.
+- On an approved release, verify the production page and submit one labeled inquiry. Confirm provider acceptance and delivery evidence separately.
 
 ## Sources reviewed
 
-- Philippine National Privacy Commission, [Right to be informed](https://privacy.gov.ph/the-right-to-be-informed/): notice scope, purposes, recipients, controller/contact, retention and rights.
-- NPC, [Data Privacy Act](https://privacy.gov.ph/data-privacy-act/) and [retention guidance](https://privacy.gov.ph/day-to-day/).
-- NPC, [Data subject rights](https://privacy.gov.ph/data-subject-rights/).
-- Vercel, [Request headers](https://vercel.com/docs/headers/request-headers): platform-supplied client-IP headers.
+- [Google: Delete messages in Gmail](https://support.google.com/mail/answer/7401?hl=en)
+- [Resend: Retention and deletion](https://www.resend.com/security/gdpr)
+- [NPC: Right to be informed](https://privacy.gov.ph/the-right-to-be-informed/)
+- [NPC: Retention guidance](https://privacy.gov.ph/day-to-day/)
+- [NPC: Data subject rights](https://privacy.gov.ph/data-subject-rights/)
+- [Vercel: Request headers](https://vercel.com/docs/headers/request-headers)
 
-This notice describes the reviewed implementation and proposed operations; it is not a claim that all legal or organizational privacy obligations have been audited.
+This review documents the implementation and owner's operational commitments; it does not certify all legal or organizational privacy obligations.
