@@ -1,26 +1,36 @@
+import { clientIp, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const reserve = createSubmissionLimiter();
+const valid = (value, max) => typeof value === "string" && value.trim().length > 0 && value.length <= max;
 
 function validWebsite(value) {
   if (typeof value !== "string" || value.length > 500) return false;
   try {
-    return ["http:", "https:"].includes(new URL(value).protocol);
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) && !url.username && !url.password;
   } catch {
     return false;
   }
 }
 
 export default async function handler(request, response) {
-  if (request.method !== "POST") return response.status(405).json({ error: "Method not allowed." });
+  response.setHeader("Cache-Control", "no-store");
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "POST");
+    return response.status(405).json({ error: "Method not allowed." });
+  }
+  const rejected = inspectRequest(request);
+  if (rejected) return response.status(rejected.status).json({ error: rejected.error });
   const body = request.body || {};
   if (body.companySite) return response.status(200).json({ message: "Thanks. Your submission was received." });
-  if (!EMAIL_PATTERN.test(String(body.email || ""))) return response.status(400).json({ error: "Enter a valid email address." });
+  if (!valid(body.email, 254) || !EMAIL_PATTERN.test(body.email)) return response.status(400).json({ error: "Enter a valid email address." });
   if (!["newsletter", "tool-submission", "service-inquiry"].includes(body.kind)) return response.status(400).json({ error: "Invalid submission." });
-  if (body.kind === "tool-submission" && (!body.name || !body.toolName || !body.toolUrl || !body.message)) {
+  if (body.kind === "tool-submission" && (!valid(body.name, 120) || !valid(body.toolName, 120) || !validWebsite(body.toolUrl) || !valid(body.message, 4000) || (body.category && body.category.length > 80))) {
     return response.status(400).json({ error: "Complete all required fields." });
   }
   if (body.kind === "service-inquiry") {
     const allowed = ["repair", "setup", "care"];
-    const valid = (value, max) => typeof value === "string" && value.trim().length > 0 && value.length <= max;
     if (!valid(body.name, 120) || !allowed.includes(body.service) || !valid(body.message, 4000) || body.message.trim().length < 15 || body.consent !== "yes") {
       return response.status(400).json({ error: "Please complete the required inquiry fields." });
     }
@@ -30,6 +40,12 @@ export default async function handler(request, response) {
   }
   if (!process.env.RESEND_API_KEY || !process.env.SUBMISSION_EMAIL) {
     return response.status(503).json({ error: "Submissions are being configured. Please try again shortly." });
+  }
+
+  const limit = reserve({ ip: clientIp(request), email: body.email });
+  if (!limit.allowed) {
+    response.setHeader("Retry-After", String(limit.retryAfter));
+    return response.status(429).json({ error: "Too many submissions. Please wait a few minutes before trying again." });
   }
 
   const subject = body.kind === "newsletter" ? "New KSL newsletter signup" : body.kind === "service-inquiry" ? `KSL service inquiry: ${body.service}` : `KSL tool submission: ${body.toolName}`;
