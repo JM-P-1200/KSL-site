@@ -4,13 +4,14 @@ Prepared October 28, 2026. This is a review branch; do not merge or release unti
 
 ## Decisions still needed
 
-- [ ] Exact legal name of the individual or entity operating KSL as the personal information controller.
-- [ ] Exact business email to publish for privacy requests. The owner chose a business email; do not publish the personal inquiry inbox by default.
-- [ ] Approve or replace the proposed 12-month retention window for closed inquiries and unsuccessful quotations.
-- [ ] Confirm mailbox, Resend, and hosting retention settings and who will manually review/delete closed records.
-- [ ] Replace the draft fields, remove the draft banner, and set an effective date only after approval.
+- [x] Owner confirmed the operator: Japhet Palmare operating KSL.
+- [x] Owner approved publishing japhmiguel@gmail.com as the privacy contact, replacing the earlier business-email preference.
+- [x] Owner approved 12-month retention for closed inquiries and will personally handle deletion reviews.
+- [ ] Confirm mailbox, Resend, and hosting retention settings. Japhet Palmare is responsible for manual deletion reviews.
+- [x] Replace the operator, contact and retention draft fields with the owner's confirmed details.
+- [ ] Remove the draft banner and set an effective date after final release approval.
 
-The proposed 12 months is an operational choice for owner review, not a period prescribed by the NPC. No provider retention settings or existing emails are changed by this PR. The draft is deliberately marked noindex; decide whether to remove that tag when publishing.
+The approved 12 months is the owner's operational choice, not a period prescribed by the NPC. No provider retention settings or existing emails are changed by this PR. The draft is deliberately marked noindex; decide whether to remove that tag when publishing.
 
 ## What this branch changes
 
