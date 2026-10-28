@@ -10,7 +10,7 @@ Updated October 28, 2026 (Asia/Manila). Changes are prepared for review; this PR
 - [x] Japhet Palmare personally handles deletion reviews.
 - [x] Monthly manual Gmail cleanup procedure documented below.
 - [x] Notice draft banner removed; applicability begins when published to production. Last-updated date is not a claim that production already changed.
-- [ ] Account-specific Resend plan or custom retention arrangement confirmed.
+- [x] Owner-provided billing screenshot shows Transactional: 3,000 emails, $0/month, consistent with Resend Free. Standard published retention reviewed; no custom arrangement is shown.
 - [ ] Owner approves merging and production release.
 
 The approved 12 months is the owner's operating policy, not a period prescribed by the NPC. No mailbox deletion, provider setting, paid service, credential, firewall or production change is performed by this PR.
@@ -19,7 +19,7 @@ The approved 12 months is the owner's operating policy, not a period prescribed 
 
 - Reviewed Google's published Gmail behavior: deleted messages move to Trash and are normally permanently deleted after 30 days.
 - Reviewed Resend's published policy: 30-day email/log retention on Free, Pro and Scale; seven-day backups; Enterprise/custom retention can differ. Earlier deletion can require provider support.
-- Resend's account page requires a separate sign-in in this browser. **The actual account plan/custom terms were not verified.** Do not label that item completed based solely on public documentation.
+- Owner-provided billing screenshot shows Transactional: 3,000 emails at $0/month, matching Resend's published Free plan. This is screenshot-based plan verification, not a direct account inspection. The screenshot does not show retention settings or custom contracts; the 30-day email/log and seven-day backup periods come from Resend's published standard policy.
 - Gmail labels, filters, account backup/export settings and actual mailbox deletion have not been inspected or changed.
 - The public notice describes the standard provider policy with its plan qualification; it does not claim this account was audited.
 
@@ -54,7 +54,7 @@ Gmail/Resend backup and infrastructure retention is provider-controlled; disting
 - Run `npm run vercel-build` and `git diff --check`.
 - Check the latest preview's privacy page, mailto link, notice links, layout and unchanged service prices.
 - Earlier application smoke test succeeded and Resend accepted the labeled preview inquiry; content-only edits do not require more real emails.
-- Verify account-specific Resend retention, resolve any conflict with the notice, and obtain final merge/release approval.
+- Plan evidence is recorded from the owner's screenshot and mapped to Resend's published standard retention. Obtain final merge/release approval; recheck retention if the plan or provider agreement changes.
 - On an approved release, verify the production page and submit one labeled inquiry. Confirm provider acceptance and delivery evidence separately.
 
 ## Sources reviewed
