@@ -1,6 +1,7 @@
 import { readFile, access, readdir } from "node:fs/promises";
 import { constants } from "node:fs";
 import { dirname, join, normalize } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const pages = [];
 const failures = [];
@@ -18,6 +19,7 @@ await collectHtml();
 
 const assets = [
   "style.css",
+  "services.css",
   "app.js",
   "forms.js",
   "blog-renderer.js",
@@ -56,6 +58,19 @@ for (const file of pages) {
       failures.push(`${file}: broken local reference ${target}`);
     }
   }
+}
+
+for (const file of ["api/submit.js", "forms.js"]) {
+  try {
+    execFileSync(process.execPath, ["--check", file], { stdio: "pipe" });
+  } catch {
+    failures.push(`${file}: JavaScript syntax check failed`);
+  }
+}
+
+const servicesHtml = await readFile("services.html", "utf8");
+if (/<style\b|\sstyle\s*=/i.test(servicesHtml)) {
+  failures.push("services.html: inline styles conflict with the deployed CSP");
 }
 
 for (const file of ["data/projects.json", "data/blogs.json", "data/build-lab.json"]) {

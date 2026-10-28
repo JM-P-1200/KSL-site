@@ -6,7 +6,7 @@
   "description": "A curated directory of AI and no-code website builders.",
   "scripts": {
     "check": "node scripts/check-site.mjs",
-    "test": "node scripts/test-build-lab.mjs",
+    "test": "node scripts/test-build-lab.mjs && node --test scripts/test-submissions.mjs",
     "serve": "node scripts/serve.mjs",
     "vercel-build": "npm run check && npm test"
   },
