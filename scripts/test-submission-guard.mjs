@@ -107,8 +107,17 @@ test("blocked traffic never reaches Resend; 429 includes Retry-After", async (t)
   assert.equal((await submit({ kind: "newsletter", email: "test@example.com" }, { origin: "https://other.example" })).code, 403);
   assert.equal((await submit({ kind: "newsletter", email: "x".repeat(255) + "@example.com" })).code, 400);
   assert.equal(fetchCalls, 0);
-  for (let i = 0; i < 3; i++) assert.equal((await submit({ kind: "newsletter", email: "rate-test@example.com" })).code, 200);
-  const limited = await submit({ kind: "newsletter", email: "rate-test@example.com" });
+  const rateBody = (index) => ({
+    kind: "tool-submission",
+    email: "rate-test@example.com",
+    name: "Rate Test",
+    toolName: `Tool ${index}`,
+    toolUrl: "https://example.com",
+    category: "Other",
+    message: `Distinct test submission ${index}`
+  });
+  for (let i = 0; i < 3; i++) assert.equal((await submit(rateBody(i))).code, 200);
+  const limited = await submit(rateBody(3));
   assert.equal(limited.code, 429);
   assert.equal(limited.headers["Cache-Control"], "no-store");
   assert.ok(Number(limited.headers["Retry-After"]) > 0);
