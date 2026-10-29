@@ -82,22 +82,27 @@ Shared storage should be considered only when one or more measurable conditions 
 
 Before implementation, the business owner must approve the vendor, cost, data location, retention/TTL, access controls, deletion behavior, incident ownership, and fallback behavior. Store the minimum possible derived identifier, prefer keyed hashes over raw IP/email values, use short expirations, prevent the limiter from becoming a customer database, and document how false positives can be handled.
 
-## Proposed inquiry retention and deletion procedure
+## Inquiry retention and deletion procedure
 
-This is a proposal for business-owner review. It is not approved policy. Before release, the owner must either approve it and confirm it matches the public privacy notice, or amend both the procedure and notice consistently.
+The approved service-inquiry decisions and operating steps are documented in [data-retention-procedure.md](data-retention-procedure.md).
 
-### Owner decisions required
+Approved:
 
-- [ ] Confirm the privacy contact and backup person responsible for requests.
-- [ ] Approve or replace the current public maximum retention period of 12 months and monthly mailbox review.
-- [ ] Set an acknowledgement target: ___ business days.
+- [x] Operator and privacy contact: Japhet Palmare, `japhmiguel@gmail.com`.
+- [x] Closed service inquiries: delete KSL-controlled copies no later than 12 months after the recorded closure date, subject to a documented exception.
+- [x] Monthly deletion reviews are personally handled by Japhet Palmare.
+
+Decisions still requiring owner approval or professional advice:
+
+- [ ] Set an acknowledgement target for privacy requests: ___ business days.
 - [ ] Set a completion target: ___ calendar days, subject to documented provider limitations.
+- [ ] Approve maximum retention periods for tool submissions and inactive newsletter signup records.
 - [ ] Decide how active customer work, accounting records, disputes, or other required records are handled; obtain professional advice where needed.
 - [ ] Confirm which mailbox backups, exports, and provider records are within scope.
-- [ ] Approve how long the minimal deletion audit record is retained.
-- [ ] Confirm Resend and mailbox deletion capabilities and provider-controlled retention periods.
+- [ ] Approve how long the minimal deletion-review log is retained.
+- [ ] Verify Resend, Vercel, and mailbox deletion capabilities and plan-specific retention periods.
 
-### Procedure after approval
+### Operating procedure
 
 1. Receive requests only through the published privacy contact. Assign a request ID and record the received date, requester address, status, and owner; do not copy the inquiry text into the tracker.
 2. Acknowledge within the approved target. Verify control of the inquiry address by replying to it; request additional information only when reasonably necessary to locate records or prevent unauthorized deletion.
@@ -117,5 +122,5 @@ This is a proposal for business-owner review. It is not approved policy. Before 
 - Vercel Preview deployment and smoke checks: required `PASS`.
 - Resend delivery and Reply-To: manual `NOT VERIFIED` until the controlled test passes.
 - Desktop/mobile layout and keyboard accessibility: manual `NOT VERIFIED` until the checklist passes.
-- Retention/deletion procedure: `NOT APPROVED` until the business owner completes the decisions above.
+- Service-inquiry retention/deletion procedure: `DOCUMENTED`; unresolved periods, response targets, provider limitations, and exception handling still require owner approval or professional advice.
 - Production deployment: prohibited by this branch; merge and deployment approval remain with the owner.
