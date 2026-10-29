@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { clientIp, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
+import { clientIp, createSubmissionDeduper, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
 import handler from "../api/submit.js";
 
 const request = (body = { email: "test@example.com" }, headers = {}) => ({
@@ -16,6 +16,7 @@ test("request guard rejects invalid encodings, shapes, oversized and cross-site 
     assert.equal(inspectRequest(request(body)).status, 400);
   }
   assert.equal(inspectRequest(request({ message: "x".repeat(16_385) })).status, 413);
+  assert.equal(inspectRequest(request({}, { "content-length": "16385" })).status, 413);
   assert.equal(inspectRequest(request({ message: "🙂".repeat(5000) })).status, 413);
   assert.equal(inspectRequest(request({}, { origin: "https://ksl-site.vercel.app" })), null);
   assert.equal(inspectRequest(request({}, { "content-type": "application/json; charset=utf-8" })), null);
@@ -46,6 +47,26 @@ test("rate-limit store is bounded and releases expired capacity", () => {
   assert.equal(reserve({ ip: "192.0.2.2", email: "new@example.com" }).allowed, false);
   time = 600_001;
   assert.equal(reserve({ ip: "192.0.2.2", email: "new@example.com" }).allowed, true);
+});
+
+test("duplicate submissions distinguish pending, accepted, and released states", () => {
+  let time = 1000;
+  const deduper = createSubmissionDeduper({ now: () => time, ttl: 10_000 });
+  const first = deduper.begin("same submission");
+  assert.equal(first.allowed, true);
+  const pending = deduper.begin("same submission");
+  assert.equal(pending.allowed, false);
+  assert.equal(pending.state, "pending");
+  deduper.complete(first.token);
+  const accepted = deduper.begin("same submission");
+  assert.equal(accepted.allowed, false);
+  assert.equal(accepted.state, "accepted");
+  time += 10_001;
+  assert.equal(deduper.begin("same submission").allowed, true);
+
+  const retryable = deduper.begin("provider failure");
+  deduper.release(retryable.token);
+  assert.equal(deduper.begin("provider failure").allowed, true);
 });
 
 test("client IP uses the Vercel header only on Vercel", (t) => {
