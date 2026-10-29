@@ -88,9 +88,9 @@ The approved service-inquiry decisions and operating steps are documented in [da
 
 Approved:
 
-- [x] Operator and privacy contact: Japhet Palmare, `japhmiguel@gmail.com`.
+- [x] Operator and privacy contact: Japhet Palmares, `japhmiguel@gmail.com`.
 - [x] Closed service inquiries: delete KSL-controlled copies no later than 12 months after the recorded closure date, subject to a documented exception.
-- [x] Monthly deletion reviews are personally handled by Japhet Palmare.
+- [x] Monthly deletion reviews are personally handled by Japhet Palmares.
 
 Decisions still requiring owner approval or professional advice:
 
