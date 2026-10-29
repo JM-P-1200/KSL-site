@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { clientIp, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
-import handler from "../api/submit.js";
+import { clientIp, createSubmissionDeduper, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
+import { createSubmissionHandler } from "../api/submit.js";
 
 const request = (body = { email: "test@example.com" }, headers = {}) => ({
   body, headers: { "content-type": "application/json", host: "ksl-site.vercel.app", ...headers }
@@ -16,6 +16,7 @@ test("request guard rejects invalid encodings, shapes, oversized and cross-site 
     assert.equal(inspectRequest(request(body)).status, 400);
   }
   assert.equal(inspectRequest(request({ message: "x".repeat(16_385) })).status, 413);
+  assert.equal(inspectRequest(request({}, { "content-length": "16385" })).status, 413);
   assert.equal(inspectRequest(request({ message: "🙂".repeat(5000) })).status, 413);
   assert.equal(inspectRequest(request({}, { origin: "https://ksl-site.vercel.app" })), null);
   assert.equal(inspectRequest(request({}, { "content-type": "application/json; charset=utf-8" })), null);
@@ -48,6 +49,26 @@ test("rate-limit store is bounded and releases expired capacity", () => {
   assert.equal(reserve({ ip: "192.0.2.2", email: "new@example.com" }).allowed, true);
 });
 
+test("duplicate submissions distinguish pending, accepted, and released states", () => {
+  let time = 1000;
+  const deduper = createSubmissionDeduper({ now: () => time, ttl: 10_000 });
+  const first = deduper.begin("same submission");
+  assert.equal(first.allowed, true);
+  const pending = deduper.begin("same submission");
+  assert.equal(pending.allowed, false);
+  assert.equal(pending.state, "pending");
+  deduper.complete(first.token);
+  const accepted = deduper.begin("same submission");
+  assert.equal(accepted.allowed, false);
+  assert.equal(accepted.state, "accepted");
+  time += 10_001;
+  assert.equal(deduper.begin("same submission").allowed, true);
+
+  const retryable = deduper.begin("provider failure");
+  deduper.release(retryable.token);
+  assert.equal(deduper.begin("provider failure").allowed, true);
+});
+
 test("client IP uses the Vercel header only on Vercel", (t) => {
   const previous = process.env.VERCEL;
   t.after(() => { if (previous === undefined) delete process.env.VERCEL; else process.env.VERCEL = previous; });
@@ -67,7 +88,15 @@ test("blocked traffic never reaches Resend; 429 includes Retry-After", async (t)
   });
   process.env.RESEND_API_KEY = "test-only";
   process.env.SUBMISSION_EMAIL = "recipient@example.com";
-  const fetchMock = t.mock.method(globalThis, "fetch", async () => ({ ok: true, json: async () => ({ id: "test-only" }) }));
+  let fetchCalls = 0;
+  const handler = createSubmissionHandler({
+    fetchImpl: async () => {
+      fetchCalls += 1;
+      return { ok: true, json: async () => ({ id: "test-only" }) };
+    },
+    limiter: createSubmissionLimiter(),
+    deduper: createSubmissionDeduper()
+  });
   t.mock.method(console, "info", () => {});
   async function submit(body, headers) {
     const res = { headers: {}, setHeader(k, v) { this.headers[k] = v; }, status(c) { this.code = c; return this; }, json(p) { this.body = p; return this; } };
@@ -77,11 +106,20 @@ test("blocked traffic never reaches Resend; 429 includes Retry-After", async (t)
   assert.equal((await submit({ companySite: "bot" })).code, 200);
   assert.equal((await submit({ kind: "newsletter", email: "test@example.com" }, { origin: "https://other.example" })).code, 403);
   assert.equal((await submit({ kind: "newsletter", email: "x".repeat(255) + "@example.com" })).code, 400);
-  assert.equal(fetchMock.mock.callCount(), 0);
-  for (let i = 0; i < 3; i++) assert.equal((await submit({ kind: "newsletter", email: "rate-test@example.com" })).code, 200);
-  const limited = await submit({ kind: "newsletter", email: "rate-test@example.com" });
+  assert.equal(fetchCalls, 0);
+  const rateBody = (index) => ({
+    kind: "tool-submission",
+    email: "rate-test@example.com",
+    name: "Rate Test",
+    toolName: `Tool ${index}`,
+    toolUrl: "https://example.com",
+    category: "Other",
+    message: `Distinct test submission ${index}`
+  });
+  for (let i = 0; i < 3; i++) assert.equal((await submit(rateBody(i))).code, 200);
+  const limited = await submit(rateBody(3));
   assert.equal(limited.code, 429);
   assert.equal(limited.headers["Cache-Control"], "no-store");
   assert.ok(Number(limited.headers["Retry-After"]) > 0);
-  assert.equal(fetchMock.mock.callCount(), 3);
+  assert.equal(fetchCalls, 3);
 });

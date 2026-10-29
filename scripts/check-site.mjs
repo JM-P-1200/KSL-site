@@ -74,6 +74,35 @@ if (/<style\b|\sstyle\s*=/i.test(servicesHtml)) {
   failures.push("services.html: inline styles conflict with the deployed CSP");
 }
 
+const privacyHtml = await readFile("privacy.html", "utf8");
+for (const required of [
+  "Japhet Palmare",
+  "japhmiguel@gmail.com",
+  "12 months after the inquiry is marked closed",
+  "Tool submissions:",
+  "Newsletter requests:",
+  "Vercel",
+  "Resend",
+  "Philippine National Privacy Commission"
+]) {
+  if (!privacyHtml.includes(required)) failures.push(`privacy.html: missing required privacy content: ${required}`);
+}
+
+if (!/name="consent"[^>]+required/i.test(servicesHtml) || !/href="privacy\.html"/i.test(servicesHtml)) {
+  failures.push("services.html: service inquiry must retain required privacy consent and notice link");
+}
+if (!servicesHtml.includes("12 months after closure")) {
+  failures.push("services.html: missing approved closed-inquiry retention summary");
+}
+
+const privacyLinkPages = ["index.html", "contact.html", "about.html", "blog.html", "build-lab.html", "services.html"];
+for (const file of privacyLinkPages) {
+  const html = await readFile(file, "utf8");
+  if (!/href="privacy\.html"[^>]*>Privacy notice</i.test(html)) {
+    failures.push(`${file}: missing Privacy notice link`);
+  }
+}
+
 for (const file of ["data/projects.json", "data/blogs.json", "data/build-lab.json"]) {
   JSON.parse(await readFile(file, "utf8"));
 }
