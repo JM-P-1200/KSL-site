@@ -1,20 +1,108 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="How KSL handles website inquiries, submissions, and privacy requests.">
-<title>Privacy notice — KSL</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="privacy.css">
-</head><body>
-<a class="skip-link" href="#privacy">Skip to privacy notice</a>
-<header class="site-header"><a class="brand" href="index.html" aria-label="KSL home"><span class="brand-mark">K</span><span>KSL</span></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="index.html#directory">Directory</a><a href="services.html">Web Services</a></nav><div class="header-actions"><a class="button button-small" href="services.html">Web Services →</a></div></header>
-<main id="privacy" class="privacy-content">
-<p class="eyebrow">KSL / Privacy</p><h1>Privacy notice</h1>
-<p class="privacy-updated">Last updated: October 28, 2026. This notice applies when published on KSL’s production website.</p>
-<section><h2>Who handles your information</h2><p>KSL operates this website and handles its service inquiries, tool submissions, and newsletter requests.</p><p><strong>Operator:</strong> Japhet Palmare operating KSL.<br><strong>Privacy contact:</strong> <a href="mailto:japhmiguel@gmail.com">japhmiguel@gmail.com</a>.</p></section>
-<section><h2>What we collect</h2><p>Service inquiries contain your name, email, selected service, message, consent, preferred timeline, and any optional phone number or website URL you provide. Tool submissions contain contact details and the product information you send. Newsletter requests contain your email address.</p><p>Our hosting provider receives request metadata, which can include your IP address and browser information. To reduce spam, the application temporarily processes IP addresses and email addresses as keyed fingerprints with request counts; it does not retain the original values in its rate-limit store.</p><p>Please do not submit passwords, account access details, payment information, identity documents, or other sensitive personal information.</p></section>
-<section><h2>Why we use it</h2><p>We use service-inquiry information to assess your request, prepare a quotation, and respond. Submitting an inquiry does not place an order or authorize payment. Tool information is used for editorial review. Newsletter emails are used for the updates you requested; a service inquiry does not subscribe you to marketing.</p><p>We ask for consent to process service inquiries for this purpose. Request metadata is also processed to secure the website and limit abuse. Automatic spam checks may temporarily reject a submission; they do not decide whether you qualify for a service.</p></section>
-<section><h2>How it is sent and who receives it</h2><p>Forms are sent over HTTPS to KSL's backend on Vercel. Accepted requests are sent through Resend to KSL's configured email inbox, where the operator reviews and replies. These hosting and email providers process data to deliver their services, potentially outside the Philippines.</p><p>The application does not write inquiry messages into a customer database. Email copies still exist in the delivery service and receiving mailbox. Application diagnostics record submission type, provider status, and email reference IDs rather than the submitted message or contact details; hosting and delivery providers maintain their own operational records.</p></section>
-<section><h2>How long we keep it</h2><p>We review closed inquiries and unsuccessful quotations monthly and remove unneeded inquiry emails, replies, and attachments from our mailbox no later than 12 months after the last meaningful contact, unless a legal obligation or claim requires longer retention. Japhet Palmare personally handles these deletion reviews. We begin cleanup before that deadline to account for Gmail’s Trash recovery period. Active conversations and necessary client, contract, invoice, or dispute records are reviewed separately and kept only for their relevant purpose or applicable obligations.</p><p>The website does not automatically erase mailbox or email-provider copies. Gmail normally removes messages from Trash after 30 days. Deleting a mailbox copy does not delete the separate copy held by Resend.</p><p>Resend publishes a standard retention period of 30 days for email and log data on its Free, Pro, and Scale plans, with backups persisting for seven days. Enterprise or custom arrangements can differ. Provider-held records are governed by the applicable provider agreement and policy, separately from KSL’s mailbox cleanup. For an earlier deletion request, contact us so we can review the relevant copies and any required provider assistance.</p><p>Temporary rate-limit fingerprints expire after at most 10 minutes and are removed on the next submission handled by that server instance, or when that instance is recycled. Hosting providers maintain separate operational records under their own retention policies.</p></section>
-<section><h2>Your choices and rights</h2><p>You can choose not to submit a form; without the required details, we may be unable to respond or assess the request. You may ask about your data, request access or correction, object to processing, withdraw consent, or request deletion or restriction where applicable. Some records may need to be kept for a legal obligation or claim. Withdrawal does not undo earlier lawful processing.</p><p>Send requests to japhmiguel@gmail.com, preferably from the address used for your inquiry. We may ask for proportionate information to verify the request. Do not send identity documents unless specifically needed and a suitable method has been agreed.</p><p>You may also raise a concern with the <a href="https://privacy.gov.ph/">Philippine National Privacy Commission</a>.</p></section>
-<section><h2>Other website features</h2><p>Directory preferences and the Build Lab demo use your browser's local storage. Clearing browser site data removes those local copies. Some pages load Google Fonts, so the browser contacts Google to request font files. Third-party sites you visit through our directory have their own privacy notices.</p><p>This notice focuses on the website's current forms and features. We will update it before materially changing these uses.</p></section>
-</main><footer class="services-footer"><a href="services.html">Web Services</a><a href="index.html">Back to directory →</a></footer>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How KSL collects, uses, protects, retains, and deletes information submitted through its website.">
+  <meta name="theme-color" content="#f5f2ea">
+  <link rel="canonical" href="https://ksl-site.vercel.app/privacy">
+  <title>Privacy notice — KSL</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="privacy.css">
+</head>
+<body>
+  <a class="skip-link" href="#privacy">Skip to privacy notice</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="KSL home"><span class="brand-mark">K</span><span>KSL</span></a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html#directory">Directory</a>
+      <a href="build-lab.html">Build Lab</a>
+      <a href="services.html">Web Services</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+    </nav>
+    <div class="header-actions"><a class="button button-small" href="services.html">Web Services →</a></div>
+  </header>
+
+  <main id="privacy" class="privacy-content">
+    <p class="eyebrow">KSL / Privacy</p>
+    <h1>Privacy notice</h1>
+    <p class="privacy-updated"><strong>Effective date:</strong> October 29, 2026</p>
+    <p>This notice explains in plain language how KSL handles information submitted through this website. It is not a claim that KSL has obtained a particular privacy certification or that every legal question has been independently reviewed.</p>
+
+    <section aria-labelledby="privacy-who">
+      <h2 id="privacy-who">Who is responsible</h2>
+      <p><strong>Operator:</strong> Japhet Palmare, operating KSL.</p>
+      <p><strong>Privacy contact:</strong> <a href="mailto:japhmiguel@gmail.com">japhmiguel@gmail.com</a>.</p>
+      <p>Japhet Palmare handles privacy requests and personally carries out KSL's deletion reviews.</p>
+    </section>
+
+    <section aria-labelledby="privacy-collect">
+      <h2 id="privacy-collect">Information we collect</h2>
+      <p><strong>Service inquiries:</strong> name, email address, selected service, inquiry message, consent choice, preferred timeline, and any optional phone number or website URL you provide.</p>
+      <p><strong>Tool submissions:</strong> your name, work email, tool name, product URL, category, and the editorial information you provide.</p>
+      <p><strong>Newsletter requests:</strong> your email address.</p>
+      <p><strong>Security and delivery information:</strong> Vercel and other network providers may process request metadata such as IP address, browser details, timestamps, and technical logs. KSL's application temporarily uses keyed fingerprints derived from IP and email values to limit abuse; these in-memory controls do not store the original values and expire quickly or disappear when the function instance is recycled.</p>
+      <p>Please do not submit passwords, account access details, payment-card information, identity documents, health information, or other sensitive information through these forms.</p>
+    </section>
+
+    <section aria-labelledby="privacy-purpose">
+      <h2 id="privacy-purpose">Why we use information and our legal reasons</h2>
+      <p>For a service inquiry, KSL uses the details to understand your request, communicate with you, assess whether KSL can help, and prepare a possible quotation. This is processing needed to take steps you request before a possible service agreement and, where applicable, is also based on the consent you give with the form.</p>
+      <p>For a tool submission, KSL uses the details to perform the editorial review you requested and to contact you about the submission. For a newsletter request, KSL uses the email address to manage the updates you asked to receive; you may unsubscribe or withdraw that request at any time.</p>
+      <p>KSL processes limited technical information to protect the website, prevent abuse, troubleshoot delivery, and maintain reliable records. Where permitted, this is based on KSL's legitimate interest in operating and securing the service, considered against the effect on visitors. KSL may also retain specific records when necessary for a legal obligation or for the establishment, exercise, or defence of a legal claim.</p>
+      <p>Submitting a service inquiry does not place an order, authorize payment, or subscribe you to marketing.</p>
+    </section>
+
+    <section aria-labelledby="privacy-providers">
+      <h2 id="privacy-providers">Vercel, Resend, and international processing</h2>
+      <p>KSL uses <a href="https://vercel.com/legal/privacy-policy">Vercel</a> to host the website and run the form endpoint. Vercel and its subprocessors may process form traffic and technical metadata in the United States and other places where they operate.</p>
+      <p>KSL uses <a href="https://resend.com/legal/privacy-policy">Resend</a> to deliver accepted form messages to KSL's email inbox. Resend processes message content, sender and recipient information, delivery events, and technical logs. Resend states that stored data is held in the United States and may be processed by its subprocessors.</p>
+      <p>Information submitted from the Philippines may therefore be processed outside the Philippines, where privacy rules may differ. The provider terms, account plan, security measures, subprocessors, transfer arrangements, and retention settings applicable to KSL must be reviewed periodically.</p>
+      <p>Deleting an email from KSL's mailbox does not automatically delete a separate copy or log held by Vercel, Resend, a mailbox provider, or their backups. KSL will not tell you that a provider copy has been deleted unless that deletion has actually been confirmed.</p>
+    </section>
+
+    <section aria-labelledby="privacy-handling">
+      <h2 id="privacy-handling">How we handle, protect, and share information</h2>
+      <p>Forms are transmitted over HTTPS. Accepted submissions are delivered to KSL's configured inbox rather than written to a KSL customer database. Application logs are designed to exclude names, email addresses, phone numbers, website URLs, and inquiry text. Access to KSL-controlled inquiry records is limited to the operator and any person who is specifically authorized and needs access.</p>
+      <p>KSL uses reasonable account, access, and application safeguards, but no internet or email system can be guaranteed completely secure. If you believe you sent a password or other sensitive information, contact KSL promptly.</p>
+      <p>KSL does not sell form information. Information is shared only with hosting, email, mailbox, and technical providers needed to operate the forms; with professional advisers when genuinely necessary and subject to appropriate confidentiality; or when disclosure is required by law. A third-party website reached through the KSL Directory has its own privacy practices.</p>
+    </section>
+
+    <section aria-labelledby="privacy-retention">
+      <h2 id="privacy-retention">How long we keep information</h2>
+      <p><strong>Closed service inquiries:</strong> KSL retains KSL-controlled inquiry emails, replies, and related copies for no longer than 12 months after the inquiry is marked closed. An inquiry is closed when the operator determines that no further service-inquiry action is genuinely expected—for example, the request was resolved, declined, withdrawn, or the quotation process ended. The operator records the closure date and conducts monthly deletion reviews.</p>
+      <p><strong>Open service inquiries:</strong> KSL retains an inquiry while it is genuinely active and reviews open inquiries periodically so that inactivity does not result in indefinite retention. If an inquiry becomes a client engagement, contract, invoice, project, or dispute record, only the necessary records are retained for the relevant business or legal purpose.</p>
+      <p><strong>Tool submissions:</strong> submission emails are kept while editorial review or follow-up is genuinely active. A fixed maximum period has not yet been approved. The operator must approve and publish that period; until then, these records are included in periodic necessity reviews and are deleted when no longer needed.</p>
+      <p><strong>Newsletter requests:</strong> the signup address is kept while the person remains subscribed or until KSL no longer operates the requested updates. A separate fixed maximum period for inactive signup records has not yet been approved. Unsubscribe and deletion requests will be applied to KSL-controlled copies, subject to verified provider limitations.</p>
+      <p><strong>Legally required or claim-related records:</strong> KSL keeps only the records that are necessary for the applicable required period or while a documented claim-related need remains, then reviews them for deletion.</p>
+      <p>Resend currently publishes standard retention information for email and log data, but the retention that applies depends on KSL's plan and the provider's current terms. Provider-controlled records and backups may remain after KSL deletes its mailbox copy. KSL verifies these limitations rather than assuming that its own 12-month schedule controls every provider copy.</p>
+    </section>
+
+    <section aria-labelledby="privacy-rights">
+      <h2 id="privacy-rights">Your choices and rights</h2>
+      <p>You may ask KSL what personal information it holds about you, request access or a copy, ask for inaccurate information to be corrected, object to or withdraw consent for applicable processing, or request deletion or blocking where appropriate. Other rights may apply under Philippine law depending on the circumstances.</p>
+      <p>Email <a href="mailto:japhmiguel@gmail.com">japhmiguel@gmail.com</a>, preferably from the address used in the form. Include an approximate submission date and the form used. KSL may ask for limited additional information when reasonably necessary to locate the record or prevent unauthorized access or deletion. Please do not send an identity document unless KSL explains why it is necessary and agrees on a suitable method.</p>
+      <p>A request may not require deletion of a record that KSL must keep for an applicable legal obligation or a documented legal claim. If a provider-controlled copy cannot be removed immediately, KSL will explain the known limitation rather than claim complete deletion.</p>
+      <p>You may raise unresolved concerns with the <a href="https://privacy.gov.ph/">Philippine National Privacy Commission</a>. This notice does not claim complete compliance with the Data Privacy Act without legal review.</p>
+    </section>
+
+    <section aria-labelledby="privacy-local">
+      <h2 id="privacy-local">Local features and external resources</h2>
+      <p>Directory preferences and the Build Lab demo use storage in your browser. Clearing this site's browser data removes those local copies. Some pages request font files from Google Fonts, which causes your browser to contact Google. KSL has not added advertising trackers or behavioral analytics through this privacy update.</p>
+    </section>
+
+    <section aria-labelledby="privacy-updates">
+      <h2 id="privacy-updates">Changes to this notice</h2>
+      <p>KSL will update the effective date on this page when the notice changes. Material changes will be highlighted on the website and, when practical and relevant to an active inquiry or subscription, communicated using the contact information already held for that purpose. KSL will not silently use previously collected information for a materially different purpose.</p>
+    </section>
+  </main>
+
+  <footer class="services-footer">
+    <a class="brand" href="index.html"><span class="brand-mark">K</span><span>KSL</span></a>
+    <a href="services.html">Web Services</a>
+    <a href="privacy.html" aria-current="page">Privacy notice</a>
+    <a href="index.html">Back to directory →</a>
+  </footer>
+</body>
+</html>
