@@ -4,10 +4,10 @@
 
 Approved business decisions:
 
-- Operator: Japhet Palmare, operating KSL.
+- Operator: Japhet Palmares, operating KSL.
 - Privacy contact: `japhmiguel@gmail.com`.
 - Closed service-inquiry retention: 12 months after the inquiry is closed.
-- Deletion reviews: performed personally by Japhet Palmare each month.
+- Deletion reviews: performed personally by Japhet Palmares each month.
 
 This procedure applies to service-inquiry emails, replies, attachments, exports, and other KSL-controlled copies. It does not create a database or require a paid service. Tool-submission and newsletter maximum retention periods remain undecided and require separate owner approval.
 
@@ -15,7 +15,7 @@ This is an operational procedure, not a claim of complete legal compliance. Obta
 
 ## Roles and access
 
-Japhet Palmare is responsible for:
+Japhet Palmares is responsible for:
 
 - deciding when a service inquiry is closed;
 - recording the closure date and deletion-due date;
@@ -60,7 +60,7 @@ The mailbox thread reference is used only to locate the record and must be prote
 
 ## Monthly retention review
 
-Japhet Palmare conducts the review once each calendar month.
+Japhet Palmares conducts the review once each calendar month.
 
 1. Open the deletion-review log and the mailbox label `KSL/Service/Closed`.
 2. Identify every record whose deletion-due date is on or before the review date.
