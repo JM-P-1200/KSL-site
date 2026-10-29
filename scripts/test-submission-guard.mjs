@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { clientIp, createSubmissionDeduper, createSubmissionLimiter, inspectRequest } from "../lib/submission-guard.js";
-import handler from "../api/submit.js";
+import { createSubmissionHandler } from "../api/submit.js";
 
 const request = (body = { email: "test@example.com" }, headers = {}) => ({
   body, headers: { "content-type": "application/json", host: "ksl-site.vercel.app", ...headers }
@@ -88,7 +88,15 @@ test("blocked traffic never reaches Resend; 429 includes Retry-After", async (t)
   });
   process.env.RESEND_API_KEY = "test-only";
   process.env.SUBMISSION_EMAIL = "recipient@example.com";
-  const fetchMock = t.mock.method(globalThis, "fetch", async () => ({ ok: true, json: async () => ({ id: "test-only" }) }));
+  let fetchCalls = 0;
+  const handler = createSubmissionHandler({
+    fetchImpl: async () => {
+      fetchCalls += 1;
+      return { ok: true, json: async () => ({ id: "test-only" }) };
+    },
+    limiter: createSubmissionLimiter(),
+    deduper: createSubmissionDeduper()
+  });
   t.mock.method(console, "info", () => {});
   async function submit(body, headers) {
     const res = { headers: {}, setHeader(k, v) { this.headers[k] = v; }, status(c) { this.code = c; return this; }, json(p) { this.body = p; return this; } };
@@ -98,11 +106,11 @@ test("blocked traffic never reaches Resend; 429 includes Retry-After", async (t)
   assert.equal((await submit({ companySite: "bot" })).code, 200);
   assert.equal((await submit({ kind: "newsletter", email: "test@example.com" }, { origin: "https://other.example" })).code, 403);
   assert.equal((await submit({ kind: "newsletter", email: "x".repeat(255) + "@example.com" })).code, 400);
-  assert.equal(fetchMock.mock.callCount(), 0);
+  assert.equal(fetchCalls, 0);
   for (let i = 0; i < 3; i++) assert.equal((await submit({ kind: "newsletter", email: "rate-test@example.com" })).code, 200);
   const limited = await submit({ kind: "newsletter", email: "rate-test@example.com" });
   assert.equal(limited.code, 429);
   assert.equal(limited.headers["Cache-Control"], "no-store");
   assert.ok(Number(limited.headers["Retry-After"]) > 0);
-  assert.equal(fetchMock.mock.callCount(), 3);
+  assert.equal(fetchCalls, 3);
 });
